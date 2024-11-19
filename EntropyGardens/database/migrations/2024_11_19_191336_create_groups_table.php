@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('groupName', length:20);
 
             $table->primary('groupName');
+            $table->foreign('userID')->references('userID')->on('users');
         });
     }
 
