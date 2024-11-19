@@ -19,8 +19,8 @@ return new class extends Migration
             // $table->string('password');
             // $table->rememberToken();
             // $table->timestamps();
-            $table->integer('id')->autoIncrement();
-            $table->string('roleName', length: 20);
+            $table->integer('userID')->autoIncrement();
+            $table->integer('roleID');
             $table->string('firstName', length: 50);
             $table->string('lastName', length:50);
             $table->string('email', length:100);
@@ -28,6 +28,8 @@ return new class extends Migration
             $table->text('password');
             $table->date('DOB');
             $table->boolean('isRegistered')->default(false);
+
+            $table->foreign('roleID')->references('roleID')->on('roles');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
