@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\users;
 use Illuminate\Http\Request;
+
+
 
 class Entropy_API_Controller extends Controller
 {
+    public $timestamps=false;
     /**
      * Display a listing of the resource.
      */
@@ -44,5 +48,11 @@ class Entropy_API_Controller extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function register(Request $request){
+        $data = $request->all();
+        users::create($data);
+        return redirect('/');
     }
 }

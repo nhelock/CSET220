@@ -14,4 +14,7 @@ class Entropy_View_Controller extends Controller
         $test = "Hello World";
         return $test;
     }
+    public function register(){
+        return view('register');
+    }
 }
