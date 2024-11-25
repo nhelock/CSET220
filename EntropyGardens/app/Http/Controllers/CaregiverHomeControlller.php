@@ -25,6 +25,6 @@ class CaregiverHomeControlller extends Controller
             )
             ->get();
 
-        return view('CaregiverH.index', compact('patients'));
+        return view('CaregiverH', compact('patients'));
     }
 }
