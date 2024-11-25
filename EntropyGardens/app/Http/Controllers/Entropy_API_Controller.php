@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\users;
+use App\Models\roles;
 use Illuminate\Http\Request;
 
 
@@ -52,15 +53,17 @@ class Entropy_API_Controller extends Controller
 
     public function register(Request $request){
         $data = $request->all();
+      
         $insert_email = $request->email;
-        $compare = users::where('email', '=', "$insert_email")->firstOrFail();
+        $compare = users::where('email', '=', $insert_email)->firstOrFail();
         if($compare == true){
-            return view('/register', ['data' => true]);
+            $inputs = roles::all();
+            return view('/register', ['data' => true, 'inputs' => $inputs]);
 
         }
-        else{
-            users::create($data);
-            return redirect('/');
-        }
+        users::create($data);
+        return redirect('/');
+
     }
 }
+
