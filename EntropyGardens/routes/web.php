@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorHomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 
@@ -9,3 +10,4 @@ Route::post('/employees/update-salary', [EmployeeController::class, 'updateSalar
 Route::get('/hi', function () {
     return 'Hi';
 });
+Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.index');
