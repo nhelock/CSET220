@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\roles;
 
 class Entropy_View_Controller extends Controller
 {
@@ -15,6 +16,7 @@ class Entropy_View_Controller extends Controller
         return $test;
     }
     public function register(){
-        return view('register');
+        $inputs = roles::all();
+        return view('register', ['inputs' => $inputs]);
     }
 }

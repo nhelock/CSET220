@@ -9,7 +9,15 @@
         <form method='POST' action='/api/register'>
             @csrf
             <label for='roleID'>Role: </label>
-            <input type='number' name='roleID' placeholder='Role'><br>
+            <select id='roleID' name='roleID'>
+                <?php
+                    foreach($inputs as $option){
+                ?>
+                <option value="{{ $option->roleID }}">{{ $option->roleName }}</option>
+                <?php
+                    } 
+                ?>
+            </select><br>
 
             <label for='firstName'>First Name: </label>
             <input type='text' name='firstName' placeholder='First Name'><br>
