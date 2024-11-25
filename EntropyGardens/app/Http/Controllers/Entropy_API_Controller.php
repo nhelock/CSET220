@@ -52,6 +52,10 @@ class Entropy_API_Controller extends Controller
 
     public function register(Request $request){
         $data = $request->all();
+        $compare = users::findOrFail($request->email());
+        if($compare == $request->email()){
+            return "Error, Email already exists";
+        }
         users::create($data);
         return redirect('/');
     }
