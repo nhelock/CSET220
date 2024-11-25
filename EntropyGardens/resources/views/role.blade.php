@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Role</title>
@@ -34,10 +33,15 @@
         .tables {
             display: flex;
             justify-content: center;
-            gap: 20px;
             margin: 20px 0;
         }
-        .box1, .box2 {
+        .box1 {
+            width: 40%;
+            background-color: #a85573;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .box2 {
             width: 40%;
             background-color: #a85573;
             border-radius: 10px;
@@ -56,10 +60,10 @@
 </head>
 <body>
     <h1>Role</h1>
-    <div class="tables">
-        <p class="box1">New Role</p>
-        <p class="box2">Access Level</p>
-    </div>
+    <table class="tables">
+        <th class="box1">New Role</th>
+        <th class="box2">Access Level</th>
+    </table>
     <div class="info">
         <p class="new">New Role<input type="text" name="New"></p>
         <p class="access">Access Level<input type="text" name="Access"></p> 
