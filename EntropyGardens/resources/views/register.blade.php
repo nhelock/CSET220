@@ -18,7 +18,16 @@
             <input type='text' name='lastName' placeholder='Last Name'><br>
 
             <label for='email'>Email: </label>
-            <input type=email name=email placeholder='Email Address'><br>
+            <input type=email name=email placeholder='Email Address'>
+            <?php
+                if(isset($data)){
+            ?>
+                <p>Email is in use</p>
+            <?php
+                }
+            ?>
+
+            <br>
 
             <label for='phoneNumber'>Phone Number: </label>
             <input type='tel' name='phoneNumber' placeholder='Phone Number'><br>

@@ -55,17 +55,12 @@ class Entropy_API_Controller extends Controller
         $insert_email = $request->email;
         $compare = users::where('email', '=', "$insert_email")->firstOrFail();
         if($compare == true){
-            return "Already in the Database";
+            return view('/register', ['data' => true]);
+
         }
         else{
-            return "Available";
+            users::create($data);
+            return redirect('/');
         }
-        // if($compare == $request->email){
-        //     return "Error, Email already exists";
-        // }
-        users::create($data);
-        return redirect('/');
-
-        
     }
 }
