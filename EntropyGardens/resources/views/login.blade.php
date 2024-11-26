@@ -53,6 +53,7 @@
     </head>
     <body>
         <h1 class="header">Login</h1>
+        <form action="/login" method="POST">
         <div class="info">
             <div class="email">Email:<input type="email" name="email_input"></div>
             <div class="password">Password:<input type="password" name="password_input"></div> 
@@ -61,5 +62,6 @@
             <button class="button1"><a href="#">Ok</a></button>
             <button class="button2"><a href="#">Cancel</a></button>
         </div>
+        </form>
     </body>
 </html>

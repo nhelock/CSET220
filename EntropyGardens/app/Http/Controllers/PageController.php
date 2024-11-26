@@ -17,6 +17,7 @@ class PageController extends Controller
     
     function Login(){
         return view('login');
+        
     }
     
     function PatientofDoctor(){

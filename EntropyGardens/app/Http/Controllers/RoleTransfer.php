@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\roles;
+use Illuminate\Support\Facades\DB;
 
 class RoleTransfer extends Controller
 {
@@ -13,22 +14,18 @@ class RoleTransfer extends Controller
      */
     public function index()
     {
-        return roles::all();
-    }
+        return view('role')->with([
+            "roles" => roles::all()
+        ]);    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $request->validate([
-            "New" => ["required", "max:20"],
-            "Access" => ["required", "unique"],
-        ]);
-        roles::create([
-            "roleName" => $request->New,
-            "accessLevel" => $request->Access,
-
+        DB::table("roles")->insert([
+            "roleName" => $request->roleName,
+            "accessLevel" => $request->accessLevel
         ]);
         return back();
     }

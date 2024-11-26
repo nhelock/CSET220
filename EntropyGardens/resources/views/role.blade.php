@@ -87,5 +87,6 @@
             <button class="button2" type="reset">Cancel</button>
         </div>
         </form>
+    </div>
 </body>
 </html>
