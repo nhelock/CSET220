@@ -66,19 +66,26 @@
     <h1>Role</h1>
     <table class="tables">
         <tr>
-            <th class="box1">New Role</th>
+            <th class="box1">Role</th>
             <th class="box2">Access Level</th>
         </tr>
-        <tr>
-   
+            @foreach ($roles as $r)
+                <tr>
+                    <td>{{ $r->roleName }}</td>
+                    <td>{{ $r->accesslevel }}</td>
+                </tr>
+
+                
+            @endforeach
     </table>
     <div class="info">
-        <p class="new">New Role<input type="text" name="New"></p>
-        <p class="access">Access Level<input type="text" name="Access"></p> 
-    </div>
-    <div class="buttons">
-        <button class="button1"><a href="">Ok</a></button>
-        <button class="button2"><a href="">Cancel</a></button>
-    </div>
+        <form action="/api/role" method="POST">
+        <p class="new">Role Name<input type="text" name="roleName"></p>
+        <p class="access">Access Level<input type="text" name="accessLevel"></p>
+        <div class="buttons">
+            <button class="button1" type="submit">Ok</button>
+            <button class="button2" type="reset">Cancel</button>
+        </div>
+        </form>
 </body>
 </html>

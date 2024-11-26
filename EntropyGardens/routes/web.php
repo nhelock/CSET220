@@ -5,13 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/role', [PageController::class, 'Roles']);
 
-// Route::get('/login', function () {
-//     return view('login');
-// });
+Route::post('/role', [PageController::class, 'RolesTransfer']);
 
-// Route::get('/patient_of_doctor', function () {
-//     return view('patient_of_doctor');
-// });
+Route::get('/login', [PageController::class, 'Login'])->name("login");
+
+Route::get('/patientofdoctor', [PageController::class, 'PatientofDoctor']);
 
 // Route::get('/patients_home', function () {
 //     return view('patients_home');

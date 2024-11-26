@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\roles;
+
 class PageController extends Controller
 {
     function Roles(){
-        return view('role');
+        return view('role')->with([
+            "roles" => roles::all()
+        ]);
     }
     
     function Login(){
