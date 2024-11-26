@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <html>
 <head>
     <title>Role</title>
@@ -61,8 +65,12 @@
 <body>
     <h1>Role</h1>
     <table class="tables">
-        <th class="box1">New Role</th>
-        <th class="box2">Access Level</th>
+        <tr>
+            <th class="box1">New Role</th>
+            <th class="box2">Access Level</th>
+        </tr>
+        <tr>
+   
     </table>
     <div class="info">
         <p class="new">New Role<input type="text" name="New"></p>
