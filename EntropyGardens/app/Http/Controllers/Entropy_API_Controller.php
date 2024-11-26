@@ -79,7 +79,8 @@ class Entropy_API_Controller extends Controller
                 'emergencyContact'=>$request->input('emergencyContact'), 'relation'=>$request->input('relation'), 'isRegistered'=>0
             ];
 
-            return family_information::create($patient_Data);
+            family_information::create($patient_Data);
+            return redirect('/');
         }
         //ADD IF STATEMENT FOR IF THE USER IS A PATIENT
         users::create($data);
