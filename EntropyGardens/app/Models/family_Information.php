@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class family_Information extends Model
 {
+    public $timestamps=false;
     protected $fillable = [
         'userID',
         'familyCode',

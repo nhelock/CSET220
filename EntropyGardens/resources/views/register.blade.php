@@ -54,12 +54,18 @@
             <label for='DOB'>Date of Birth:</label>
             <input type='date' name='DOB' placeholder='Date of Birth'><br>
 
-            {{-- <div id=patients>
+            <div id=patients>
                 <p>Patient-Exclusive Fields</p>
 
                 <label for='familyCode'>Family Code: </label>
                 <input type='text' name='familyCode' placeholder='Make your Family Code'><br>
-            </div> --}}
+
+                <label for='emergencyContact'>Emergency Contact: </label>
+                <input type='text' name='emergencyContact' placeholder='Emergency Contact Number'><br>
+
+                <label for='relation'>Contact Relation:</label>
+                <input type='text' name='relation' placeholder='Relation to Patient'><br>
+            </div>
 
             <button type=submit>Register</button>
 
