@@ -19,4 +19,8 @@ class Entropy_View_Controller extends Controller
         $inputs = roles::all();
         return view('register', ['inputs' => $inputs]);
     }
+
+    public function familyHome(){
+        return view('familyHome');
+    }
 }

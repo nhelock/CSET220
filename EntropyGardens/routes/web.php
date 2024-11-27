@@ -15,6 +15,8 @@ Route::get('/hi', function () {
 Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.index');
 Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 
+Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Register Today</title>
-        <style></style>
+        <link rel="stylesheet" href="/css/familyHome.css" />
     </head>
     <body>
         <h1>Register</h1>
