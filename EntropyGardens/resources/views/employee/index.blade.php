@@ -115,9 +115,11 @@ td .c-button{
 /* FORM */
 .form-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width:fit-content;
-    gap: 10px; 
+    gap: 10px;
+    padding:10px;
+    justify-content:space-between;
 }
 
 form.search_by {
@@ -224,49 +226,58 @@ form.update_salary button:hover {
                 </table>
             </div>
         
+            <form class="update_salary" action="/api/employees/update-salary" method="POST">
+                @csrf
+                <label for="employee_id">Employee ID:</label>
+                <input type="text" id="employee_id" name="employee_id" placeholder="Enter Employee ID" required>
+                <label for="new_salary">New Salary:</label>
+                <input type="text" id="new_salary" name="new_salary" placeholder="Enter New Salary" required>
+                <button type="submit">Update Salary</button>
+            </form>
+
+        </div>
+
         <div class='form-container'>
             <form class="search_by" action='/api/employees/search/id' method="GET">
                 @csrf
                 <label for="search">Search By ID:</label>
-                <input type="text" id="search" name="userID" placeholder="ID">
+                <input type="text" id="search" name="search" placeholder="ID">
+                <input type="hidden" name="search_by" value="userID">
                 <button type="submit">Search</button>
             </form>
 
             <form class="search_by" action='/api/employees/search/name' method="GET">
                 @csrf
                 <label for="search">Search By Last Name:</label>
-                <input type="text" id="search" name="userID" placeholder="Name">
+                <input type="text" id="search" name="search" placeholder="Name">
+                <input type="hidden" name="search_by" value="lastName">
                 <button type="submit">Search</button>
             </form>
 
             <form class="search_by" action='/api/employees/search/role' method="GET">
                 @csrf
                 <label for="search">Search By Role:</label>
-                <input type="text" id="search" name="userID" placeholder="Role">
+                <input type="text" id="search" name="search" placeholder="Role">
+                <input type="hidden" name="search_by" value="roleName">
+                <button type="submit">Search</button>
+            </form>
+
+            <form class="search_by" action='/api/employees/search/salary' method="GET">
+                @csrf
+                <label for="search">Search By Salary:</label>
+                <input type="text" id="search" name="search" placeholder="Salary">
+                <input type="hidden" name="search_by" value="salary">
                 <button type="submit">Search</button>
             </form>
         </div>
 
-        <form class="update_salary" action="/api/employees/update-salary" method="POST">
-            @csrf
-            <label for="employee_id">Employee ID:</label>
-            <input type="text" id="employee_id" name="employee_id" placeholder="Enter Employee ID" required>
-            <label for="new_salary">New Salary:</label>
-            <input type="text" id="new_salary" name="new_salary" placeholder="Enter New Salary" required>
-            <button type="submit">Update Salary</button>
-        </form>
-
-        </div>
-
         <?php
-            if(isset($foundUser)){        
+            if(isset($foundUsers)){        
         ?>
         <div class="results">
             <div class='heading'>
                 <h1>Found User</h1>
             </div>
-            <p>Employee Name: {{ $foundUser->firstName }}</p>
-
             <div class="table-container">
                 <table>
                     <thead>
@@ -278,12 +289,12 @@ form.update_salary button:hover {
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($employees as $employee)
+                        @foreach ($foundUsers as $foundUser)
                         <tr>
-                            <td>{{ $employee->id }}</td>
-                            <td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
-                            <td>{{ $employee->role }}</td>
-                            <td>{{ $employee->salary }}</td>
+                            <td>{{ $foundUser->id }}</td>
+                            <td>{{ $foundUser->first_name }} {{ $foundUser->last_name }}</td>
+                            <td>{{ $foundUser->role }}</td>
+                            <td>{{ $foundUser->salary }}</td>
                         </tr>
                         @endforeach
                     </tbody>

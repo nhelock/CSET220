@@ -25,6 +25,49 @@ class EmployeeController extends Controller
         return view('employee.index', compact('employees'));
     }
 
+    public function searchJoin(Request $request)
+    {
+        $employees = users::join('salaries', 'users.userID', '=', 'salaries.userID')
+        ->join('roles', 'users.roleID', '=', 'roles.roleID')
+        ->select(
+            'users.roleID as id',
+            'users.firstName as first_name',
+            'users.lastName as last_name',
+            'roles.roleName as role',
+            'salaries.salary'
+        )
+        ->get();
+        if($request['search_by'] == 'salary'){
+            $foundUsers = users::join('salaries', 'users.userID', '=', 'salaries.userID')
+            ->join('roles', 'users.roleID', '=', 'roles.roleID')
+            ->select(
+                'users.userID as id',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'roles.roleName as role',
+                'salaries.salary'
+            )
+            ->where('salaries.' . $request['search_by'], $request['search'])
+            ->get();
+        }
+        else{
+            $foundUsers = users::join('salaries', 'users.userID', '=', 'salaries.userID')
+            ->join('roles', 'users.roleID', '=', 'roles.roleID')
+            ->select(
+                'users.userID as id',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'roles.roleName as role',
+                'salaries.salary'
+            )
+            ->where('roles.' . $request['search_by'], $request['search'])
+            ->get();
+        }
+
+        // return $employee;
+        return view('employee.index', ['employees' => $employees, 'foundUsers' => $foundUsers]);
+    }
+
     public function search(Request $request)
     {
         $employees = users::join('salaries', 'users.userID', '=', 'salaries.userID')
@@ -38,10 +81,21 @@ class EmployeeController extends Controller
         )
         ->get();
 
-        $foundUser = users::where('userID', $request['userID'])->first();
+        $foundUsers = users::join('salaries', 'users.userID', '=', 'salaries.userID')
+            ->join('roles', 'users.roleID', '=', 'roles.roleID')
+            ->select(
+                'users.userID as id',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'roles.roleName as role',
+                'salaries.salary'
+            )
+            ->where('users.' . $request['search_by'], $request['search'])
+            ->get();
+
 
         // return $employee;
-        return view('employee.index', ['employees' => $employees, 'foundUser' => $foundUser]);
+        return view('employee.index', ['employees' => $employees, 'foundUsers' => $foundUsers]);
     }
 
     public function updateSalary(Request $request)

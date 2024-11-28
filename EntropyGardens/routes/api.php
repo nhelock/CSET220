@@ -15,3 +15,8 @@ Route::post('/employees/update-salary', [EmployeeController::class, 'updateSalar
 
 //Finds a Specific Employee
 Route::get('/employees/search/id', [EmployeeController::class, 'search']);
+Route::get('/employees/search/name', [EmployeeController::class, 'search']);
+
+//These need a NEW FUNCTION since they require the salary table to be joined.
+Route::get('/employees/search/salary', [EmployeeController::class, 'searchJoin']);
+Route::get('/employees/search/role', [EmployeeController::class, 'searchJoin']);
