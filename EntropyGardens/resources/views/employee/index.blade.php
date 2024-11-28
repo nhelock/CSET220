@@ -224,7 +224,8 @@ form.update_salary button:hover {
             <button type="submit">Search</button>
         </form>
 
-        <form class="update_salary" action="{{ route('employee.updateSalary') }}" method="POST">
+        <form class="update_salary" action="/api/employees/update-salary" method="POST">
+            {{-- action="{{ route('employee.updateSalary') }}" --}}
             @csrf
             <label for="employee_id">Employee ID:</label>
             <input type="text" id="employee_id" name="employee_id" placeholder="Enter Employee ID" required>

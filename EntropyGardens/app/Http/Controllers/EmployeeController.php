@@ -11,12 +11,13 @@ class EmployeeController extends Controller
     public function index()
     {
        
-        $employees = users::join('salaries', 'users.roleID', '=', 'salaries.userID')
+        $employees = users::join('salaries', 'users.userID', '=', 'salaries.userID')
+            ->join('roles', 'users.roleID', '=', 'roles.roleID')
             ->select(
                 'users.roleID as id',
                 'users.firstName as first_name',
                 'users.lastName as last_name',
-                'users.roleID as role',
+                'roles.roleName as role',
                 'salaries.salary'
             )
             ->get();
@@ -31,6 +32,11 @@ class EmployeeController extends Controller
 
     public function updateSalary(Request $request)
     {
-        
+        $data = $request->all();
+        $employee = salaries::where('userID', $data['employee_id'])->first();
+
+        $employee->update(['salary' => $data['new_salary']]);
+
+        return redirect('/employees');
     }
 }
