@@ -20,7 +20,13 @@ class Login extends Controller
         return users::create($request->all);
     }
 
-    public function verification(){
-        
+    public function login(Request $request){
+        $request->validate([
+            "email" => ['required'],
+            "password" => ['required']
+        ]);
+        if($request){
+
+        }
     }
 }
