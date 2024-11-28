@@ -59,7 +59,7 @@
             <div class="password">Password:<input type="password" name="password_input"></div> 
         </div>
         <div class="buttons">
-            <button class="button1"><a href="#">Ok</a></button>
+            <button class="button1">Ok</button>
             <button class="button2"><a href="#">Cancel</a></button>
         </div>
         </form>
