@@ -27,11 +27,26 @@ class EmployeeController extends Controller
 
     public function search(Request $request)
     {
-        
+        $employees = users::join('salaries', 'users.userID', '=', 'salaries.userID')
+        ->join('roles', 'users.roleID', '=', 'roles.roleID')
+        ->select(
+            'users.roleID as id',
+            'users.firstName as first_name',
+            'users.lastName as last_name',
+            'roles.roleName as role',
+            'salaries.salary'
+        )
+        ->get();
+
+        $foundUser = users::where('userID', $request['userID'])->first();
+
+        // return $employee;
+        return view('employee.index', ['employees' => $employees, 'foundUser' => $foundUser]);
     }
 
     public function updateSalary(Request $request)
     {
+        //ADD IF STATEMENT HERE TO CHECK IF THE SESSION ACCESS LEVEL IS = TO ADMIN
         $data = $request->all();
         $employee = salaries::where('userID', $data['employee_id'])->first();
 

@@ -113,6 +113,13 @@ td .c-button{
 }
 
 /* FORM */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    gap: 10px; 
+}
+
 form.search_by {
     width: 30%;
     display: flex;
@@ -125,7 +132,7 @@ form.search_by input[type=text] {
     font-size: 17px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
+    width: 150%;
     background: #f1f1f1;
 }
   
@@ -216,16 +223,31 @@ form.update_salary button:hover {
                     </tbody>
                 </table>
             </div>
-            
-        <form class="search_by" action="{{ route('employee.search') }}" method="GET">
-            @csrf
-            <label for="search">Search By ID:</label>
-            <input type="text" id="search" name="search" placeholder="Enter Employee ID">
-            <button type="submit">Search</button>
-        </form>
+        
+        <div class='form-container'>
+            <form class="search_by" action='/api/employees/search/id' method="GET">
+                @csrf
+                <label for="search">Search By ID:</label>
+                <input type="text" id="search" name="userID" placeholder="ID">
+                <button type="submit">Search</button>
+            </form>
+
+            <form class="search_by" action='/api/employees/search/name' method="GET">
+                @csrf
+                <label for="search">Search By Last Name:</label>
+                <input type="text" id="search" name="userID" placeholder="Name">
+                <button type="submit">Search</button>
+            </form>
+
+            <form class="search_by" action='/api/employees/search/role' method="GET">
+                @csrf
+                <label for="search">Search By Role:</label>
+                <input type="text" id="search" name="userID" placeholder="Role">
+                <button type="submit">Search</button>
+            </form>
+        </div>
 
         <form class="update_salary" action="/api/employees/update-salary" method="POST">
-            {{-- action="{{ route('employee.updateSalary') }}" --}}
             @csrf
             <label for="employee_id">Employee ID:</label>
             <input type="text" id="employee_id" name="employee_id" placeholder="Enter Employee ID" required>
@@ -235,6 +257,43 @@ form.update_salary button:hover {
         </form>
 
         </div>
+
+        <?php
+            if(isset($foundUser)){        
+        ?>
+        <div class="results">
+            <div class='heading'>
+                <h1>Found User</h1>
+            </div>
+            <p>Employee Name: {{ $foundUser->firstName }}</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($employees as $employee)
+                        <tr>
+                            <td>{{ $employee->id }}</td>
+                            <td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
+                            <td>{{ $employee->role }}</td>
+                            <td>{{ $employee->salary }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <?php
+            }
+        ?>
+
     </div>
     </body>
     <script src="script.js"></script>
