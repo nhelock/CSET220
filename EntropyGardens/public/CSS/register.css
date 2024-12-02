@@ -77,6 +77,7 @@ input, select{
     background-color:mediumslateblue;
     width:fit-content;
     border-radius: 0px 30px 0px 30px;
+    box-shadow: 0px 0px 20px 10px rgb(86, 58, 84);
 
 }
 #patients p{
@@ -98,4 +99,10 @@ input, select{
     border-style:ridge;
     margin:auto;
     position:relative;
+    color:#4c236d;
+}
+.submit:hover{
+    cursor:pointer;
+    background-color:rgb(205, 165, 200);
+    color:white;
 }
