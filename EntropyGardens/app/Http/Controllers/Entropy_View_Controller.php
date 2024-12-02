@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\roles;
+use App\Models\users;
 
 class Entropy_View_Controller extends Controller
 {
@@ -22,5 +23,10 @@ class Entropy_View_Controller extends Controller
 
     public function familyHome(){
         return view('familyHome');
+    }
+
+    public function registrationApproval(){
+        $users = users::join('roles', 'roles.roleID', '=', 'users.roleID')->get();
+        return view('registrationApproval', ['users' => $users]);
     }
 }
