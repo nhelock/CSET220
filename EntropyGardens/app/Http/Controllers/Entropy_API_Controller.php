@@ -52,6 +52,27 @@ class Entropy_API_Controller extends Controller
         //
     }
 
+    public function approve(Request $request){
+        $confirm = $request->confirm;
+        $userID = $request->userID;
+        $role = $request->role;
+
+        if($confirm == 'true'){
+            if($role == 'patient'){
+                family_information::where('userID', $userID)->update(['isRegistered' => true]);
+            }
+
+            users::where('userID', $userID)->update(['isRegistered' => true]);
+        }
+        elseif($confirm == 'false'){
+            if($role == 'patient'){
+                family_information::where('userID', $userID)->delete();
+            }
+            users::where('userID', $userID)->delete();
+        }
+        return redirect('/approval');
+    }
+
     public function register(Request $request){
         // $data = $request->all();
 
@@ -87,5 +108,7 @@ class Entropy_API_Controller extends Controller
         return redirect('/');
 
     }
+
+
 }
 

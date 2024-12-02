@@ -95,3 +95,8 @@ td .c-button{
     text-align: center;
     overflow: visible;
 }
+
+.form-container {
+    display: flex;
+    gap: 10px;
+}

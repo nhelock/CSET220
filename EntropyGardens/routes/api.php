@@ -20,3 +20,7 @@ Route::get('/employees/search/name', [EmployeeController::class, 'search']);
 //These need a NEW FUNCTION since they require the salary table to be joined.
 Route::get('/employees/search/salary', [EmployeeController::class, 'searchJoin']);
 Route::get('/employees/search/role', [EmployeeController::class, 'searchJoin']);
+
+//I want you to know this didn't work for 20 minutes because the form said "approval" and the route said "approve"
+//Kill me
+Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
