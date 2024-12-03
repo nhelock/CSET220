@@ -9,7 +9,7 @@ use App\Models\users;
 class Entropy_View_Controller extends Controller
 {
     public function displayHome(){
-        return view('welcome');
+        return view('homepage');
     }
 
     public function test(){
@@ -36,6 +36,12 @@ class Entropy_View_Controller extends Controller
     public function loginPage(){
         return view('login');
     }
+
+    public function newRoster(){
+        return view('newRoster');
+    }
+    
+
     public function logout(){
         session()->flush();
         return redirect('/');

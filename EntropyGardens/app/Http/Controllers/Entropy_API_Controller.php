@@ -159,8 +159,6 @@ class Entropy_API_Controller extends Controller
         }}
         $error = "Error: Email and Password do not match.";
         return view('/login', ['data' => $error]);
-        
-        
     }
 
 
