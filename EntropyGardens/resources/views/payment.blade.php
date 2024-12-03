@@ -1,3 +1,12 @@
+<?php 
+session_start();
+function alterPayment(){
+    if(){
+
+    }
+}
+
+?>
 <html>
     <head>
         <style>
@@ -44,14 +53,16 @@
     </head>
     <body>
         <h1>Payment</h1>
+        <form action="/payment" method="POST">
         <div class="info">
-            <p class="id">Payment ID <input type="text" name="ID"></p>
-            <p class="due">Total Due<input type="text" name="Due"></p>
+            <p class="id">Payment ID<input type="text" name="ID"></p>
+            <p class="due">Total Due</p>
             <p class="new">New Payment<input type="text" name="New"></p> 
         </div>
         <div class="buttons">
         <button class="button1"><a href="">Ok</a></button>
         <button class="button2"><a href="">Cancel</a></button>
         </div>
+        </form>
     </body>
 </html>

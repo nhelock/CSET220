@@ -10,11 +10,14 @@ class Login extends Controller
 
     public function login(Request $request){
         $request->validate([
-            "email" => ['required'],
+            "email" => ['email'],
             "password" => ['required']
         ]);
-        if($request){
+    }
 
-        }
+    function storeInfo(Request $_store){
+        if ($_POST['email_input'] || $_POST['password_input']);
+    
+        return 
     }
 }

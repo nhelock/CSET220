@@ -1,14 +1,18 @@
 <?php
 session_start();
-if(isset($_POST['Ok']))
-{
-    $email = $_POST['email_input'];
-    $password = $_POST['password_input'];
+function storeInfo(){
+    if ($_POST['email_input'])
 }
-else 
-{
-    $error = 'Sorry, please try again';
-}
+
+
+if (isset($_POST['Ok'])) {
+        if (empty($_POST['email_input']) || empty($_POST['password_input'])) {
+            $error = "Fields are required for login!";
+        } else {
+            $email = $_POST['email_input'];
+            $password = $_POST['password_input'];
+        }
+    }
 ?>
 
 <html>
@@ -67,7 +71,9 @@ else
     <body>
         <h1 class="header">Login</h1>
         <?php
-            if(isset($error))
+            if(isset($error)){
+                echo "<p>$error</p>";
+            }
         ?>
         <form action="/login" method="POST">
         <div class="info">
