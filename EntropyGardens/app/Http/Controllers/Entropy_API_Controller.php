@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class Entropy_API_Controller extends Controller
 {
     public $timestamps=false;
+    
     /**
      * Display a listing of the resource.
      */
@@ -91,6 +92,7 @@ class Entropy_API_Controller extends Controller
 
         }
         //THIS IS NOT CURRENTLY WORKING, REMEMBER TO FIX THIS IN THE MORNING
+        //Fixed it :uwucat:
         if($request->input('roleID') == 5){
             users::create($data);
             // $finder = users::where('userID', '=', 1)->first();
@@ -107,6 +109,58 @@ class Entropy_API_Controller extends Controller
         users::create($data);
         return redirect('/');
 
+    }
+
+    public function login(Request $request){
+        $email = $request->email_input;
+        $password = $request->password_input;
+
+        $compare = users::where('email', '=', $email)->first();
+        if($compare){
+            if($email == $compare->email && $password == $compare->password){
+                if($compare->isRegistered == 1){
+
+                    $session_user = users::where('userID', '=', "$compare->userID")->join('roles', 'users.roleID', '=', 'roles.roleID')->first();
+                    session([
+                        'userID' =>$session_user->userID,
+                        'roleName' => $session_user->roleName,
+                        'accesslevel' => $session_user->accesslevel,
+                        'firstName' => $session_user->firstName,
+                        'lastName' => $session_user->lastName
+                    ]);
+                    // session()->flush();
+                    //This is important for the Logout Feature
+
+                    if(session('roleName') == 'admin'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'supervisor'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'doctor'){
+                        return redirect('/DoctorH');
+                    }
+                    elseif(session('roleName') == 'caregiver'){
+                        return redirect('/CaregiverH');
+                    }
+                    elseif(session('roleName') == 'patient'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'family'){
+                        return redirect('/family');
+                    }
+                    return redirect('/');
+                    return session('userID');
+                }
+                elseif($compare->isRegistered == 0){
+                    $error = "Error:  User has not been confirmed yet.  Please try again Later";
+                    return view('/login', ['data' => $error]);
+                }
+        }}
+        $error = "Error: Email and Password do not match.";
+        return view('/login', ['data' => $error]);
+        
+        
     }
 
 

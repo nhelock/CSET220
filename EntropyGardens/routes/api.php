@@ -11,7 +11,7 @@ Route::resource('/routes', Entropy_API_Controller::class);
 Route::post('/registerUser', [Entropy_API_Controller::class, 'register']);
 
 //Updates the Salary of an Employee in the Employee Page.
-Route::post('/employees/update-salary', [EmployeeController::class, 'updateSalary']);
+Route::post('/employees/update-salary', [EmployeeController::class, 'updateSalary'])->middleware('web');
 
 //Finds a Specific Employee
 Route::get('/employees/search/id', [EmployeeController::class, 'search']);
@@ -24,3 +24,5 @@ Route::get('/employees/search/role', [EmployeeController::class, 'searchJoin']);
 //I want you to know this didn't work for 20 minutes because the form said "approval" and the route said "approve"
 //Kill me
 Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
+
+Route::post('/login', [Entropy_API_Controller::class, 'login'])->middleware('web');
