@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class Entropy_API_Controller extends Controller
 {
     public $timestamps=false;
+    
     /**
      * Display a listing of the resource.
      */
@@ -118,7 +119,17 @@ class Entropy_API_Controller extends Controller
         if($compare){
             if($email == $compare->email && $password == $compare->password){
                 $session_user = users::where('userID', '=', "$compare->userID")->join('roles', 'users.roleID', '=', 'roles.roleID')->first();
-                return $session_user;
+                session([
+                    'userID' =>$session_user->userID,
+                    'roleName' => $session_user->roleName,
+                    'accessLevel' => $session_user->accessLevel,
+                    'firstName' => $session_user->firstName,
+                    'lastName' => $session_user->lastName
+                ]);
+                // session()->flush();
+                //This is important for the Logout Feature
+                return redirect('/');
+                return session('userID');
             }
         }
         return "Not Logged In";

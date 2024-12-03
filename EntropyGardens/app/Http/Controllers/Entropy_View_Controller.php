@@ -33,4 +33,8 @@ class Entropy_View_Controller extends Controller
     public function loginPage(){
         return view('login');
     }
+    public function logout(){
+        session()->flush();
+        return redirect('/');
+    }
 }

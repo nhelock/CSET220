@@ -21,7 +21,7 @@ Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);
 //     return view('welcome');
 // });
 
-Route::get('/', [Entropy_View_Controller::class, 'displayHome']);
+Route::get('/', [Entropy_View_Controller::class, 'displayHome'])->middleware('web');
 
 Route::get('/test', [Entropy_View_Controller::class, 'test']);
 
@@ -30,3 +30,5 @@ Route::get('/register', [Entropy_View_Controller::class, 'register']);
 Route::get('/approval', [Entropy_View_Controller::class, 'registrationApproval']);
 
 Route::get('/login', [Entropy_View_Controller::class, 'loginPage']);
+
+Route::get('/logout', [Entropy_View_Controller::class, 'logout']);

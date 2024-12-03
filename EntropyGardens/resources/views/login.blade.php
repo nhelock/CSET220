@@ -58,6 +58,7 @@
     <body>
         <h1 class="header">Login</h1>
         <form action="/api/login" method="POST">
+            @csrf
             <div class="info">
                 <div class="email">Email:<input type="email" name="email_input"></div>
                 <div class="password">Password:<input type="password" name="password_input"></div> 
