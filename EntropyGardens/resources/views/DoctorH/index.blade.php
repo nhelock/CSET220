@@ -1,8 +1,12 @@
-<html>
+{{-- <html>
     <head>
         <title>
             Doctor Home
-        </title>
+        </title> --}}
+    @extends('layouts.app')
+    @section('title', 'Doctors Home')
+
+    @section('content')
         <style>
             
 * {
@@ -153,14 +157,7 @@ form.seacrh_by::after {
 
 
         </style>
-    </head>
-    <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Other">Other</a></li>
-                <li><a href="#Other">Other</a></li>
-            </ul>
-    </nav>
+    {{-- </head> --}}
     <div>
         <div class="heading">
         <h1>
@@ -222,6 +219,7 @@ form.seacrh_by::after {
             </form>
         </div>
     </div>
-    </body>
+    
     <script src="script.js"></script>
-</html>
+{{-- </html> --}}
+@endsection
