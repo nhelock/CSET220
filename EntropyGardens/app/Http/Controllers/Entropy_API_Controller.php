@@ -118,21 +118,28 @@ class Entropy_API_Controller extends Controller
         $compare = users::where('email', '=', $email)->first();
         if($compare){
             if($email == $compare->email && $password == $compare->password){
-                $session_user = users::where('userID', '=', "$compare->userID")->join('roles', 'users.roleID', '=', 'roles.roleID')->first();
-                session([
-                    'userID' =>$session_user->userID,
-                    'roleName' => $session_user->roleName,
-                    'accessLevel' => $session_user->accessLevel,
-                    'firstName' => $session_user->firstName,
-                    'lastName' => $session_user->lastName
-                ]);
-                // session()->flush();
-                //This is important for the Logout Feature
-                return redirect('/');
-                return session('userID');
-            }
-        }
-        return "Not Logged In";
+                if($compare->isRegistered == 1){
+
+                    $session_user = users::where('userID', '=', "$compare->userID")->join('roles', 'users.roleID', '=', 'roles.roleID')->first();
+                    session([
+                        'userID' =>$session_user->userID,
+                        'roleName' => $session_user->roleName,
+                        'accesslevel' => $session_user->accesslevel,
+                        'firstName' => $session_user->firstName,
+                        'lastName' => $session_user->lastName
+                    ]);
+                    // session()->flush();
+                    //This is important for the Logout Feature
+                    return redirect('/');
+                    return session('userID');
+                }
+                elseif($compare->isRegistered == 0){
+                    $error = "Error:  User has not been confirmed yet.  Please try again Later";
+                    return view('/login', ['data' => $error]);
+                }
+        }}
+        $error = "Error: Email and Password do not match.";
+        return view('/login', ['data' => $error]);
         
         
     }

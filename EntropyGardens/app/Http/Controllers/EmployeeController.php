@@ -101,11 +101,15 @@ class EmployeeController extends Controller
     public function updateSalary(Request $request)
     {
         //ADD IF STATEMENT HERE TO CHECK IF THE SESSION ACCESS LEVEL IS = TO ADMIN
-        $data = $request->all();
-        $employee = salaries::where('userID', $data['employee_id'])->first();
+        if(session('accesslevel') == 1){
+            $data = $request->all();
+            $employee = salaries::where('userID', $data['employee_id'])->first();
 
-        $employee->update(['salary' => $data['new_salary']]);
+            $employee->update(['salary' => $data['new_salary']]);
 
+            return redirect('/employees');
+        }
         return redirect('/employees');
+        
     }
 }

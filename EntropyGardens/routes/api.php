@@ -11,7 +11,7 @@ Route::resource('/routes', Entropy_API_Controller::class);
 Route::post('/registerUser', [Entropy_API_Controller::class, 'register']);
 
 //Updates the Salary of an Employee in the Employee Page.
-Route::post('/employees/update-salary', [EmployeeController::class, 'updateSalary']);
+Route::post('/employees/update-salary', [EmployeeController::class, 'updateSalary'])->middleware('web');
 
 //Finds a Specific Employee
 Route::get('/employees/search/id', [EmployeeController::class, 'search']);

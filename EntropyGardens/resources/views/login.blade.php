@@ -57,6 +57,7 @@
     </head>
     <body>
         <h1 class="header">Login</h1>
+
         <form action="/api/login" method="POST">
             @csrf
             <div class="info">
@@ -68,6 +69,13 @@
                 <a href='/' class='button2'>Go Back</a>
             </div>
         </form>
+        <?php
+            if(isset($data)){
+        ?>
+            <h1>{{ $data }}</h1>
+        <?php
+            }
+        ?>
         
     </body>
 </html>
