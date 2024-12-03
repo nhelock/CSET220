@@ -10,7 +10,7 @@
         {{-- put header here --}}
 
         <main class='main'>
-            <div class=container>
+            <div class=container-header>
                 @yield('content')
             </div>
         </main>

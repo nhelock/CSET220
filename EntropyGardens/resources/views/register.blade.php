@@ -10,7 +10,7 @@
     @section('title', 'Register')
 
     @section('content')
-
+        <link rel="stylesheet" href="/CSS/register.css">
         <div class=container>
             <div>
                 <a href='/'><button class='cancel-button'>X</button></a>
