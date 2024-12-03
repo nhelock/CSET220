@@ -3,7 +3,7 @@
     padding:0;
     box-sizing:border-box;
     font-family: Arial, sans-serif;
-    color: #4c236d;
+    color: #2a123e;
 }
 body{
     background-color: #f0f0f0;
@@ -27,13 +27,13 @@ input, select{
     float:right;
     border-style:outset;
     border-width:3px;
-    border-color:rgb(154, 67, 154);
-    background-color:gray;
-    color:white;
+    border-color:#a8577e;
+    background-color:#f5d7e3;
+    /* color:white; */
 }
-::placeholder{
+/* ::placeholder{
     color:rgb(214, 214, 214);
-}
+} */
 
 .container {
     display: flex;
@@ -74,7 +74,7 @@ input, select{
     margin:auto;
     margin-top:10vh;
     padding:3vh;
-    background-color:mediumslateblue;
+    background-color:#f4a5ae;
     width:fit-content;
     border-radius: 0px 30px 0px 30px;
     box-shadow: 0px 0px 20px 10px rgb(86, 58, 84);
