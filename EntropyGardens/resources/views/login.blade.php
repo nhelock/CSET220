@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_POST['Ok']))
+{
+    $email = $_POST['email_input'];
+    $password = $_POST['password_input'];
+}
+else 
+{
+    $error = 'Sorry, please try again';
+}
+?>
+
 <html>
     <head>
         <title>Login</title>
@@ -53,6 +66,9 @@
     </head>
     <body>
         <h1 class="header">Login</h1>
+        <?php
+            if(isset($error))
+        ?>
         <form action="/login" method="POST">
         <div class="info">
             <div class="email">Email:<input type="email" name="email_input"></div>
