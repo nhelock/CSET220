@@ -130,6 +130,25 @@ class Entropy_API_Controller extends Controller
                     ]);
                     // session()->flush();
                     //This is important for the Logout Feature
+
+                    if(session('roleName') == 'admin'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'supervisor'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'doctor'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'caregiver'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'patient'){
+                        return redirect('/');
+                    }
+                    elseif(session('roleName') == 'family'){
+                        return redirect('/');
+                    }
                     return redirect('/');
                     return session('userID');
                 }
