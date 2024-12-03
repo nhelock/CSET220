@@ -29,4 +29,8 @@ class Entropy_View_Controller extends Controller
         $users = users::join('roles', 'roles.roleID', '=', 'users.roleID')->get();
         return view('registrationApproval', ['users' => $users]);
     }
+
+    public function loginPage(){
+        return view('login');
+    }
 }
