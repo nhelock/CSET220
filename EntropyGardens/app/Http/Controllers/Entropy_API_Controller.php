@@ -129,6 +129,7 @@ class Entropy_API_Controller extends Controller
                         'lastName' => $session_user->lastName
                     ]);
                     // session()->flush();
+                    //DONT UNCOMMENT THAT I'M BEGGING YOU
                     //This is important for the Logout Feature
 
                     if(session('roleName') == 'admin'){
