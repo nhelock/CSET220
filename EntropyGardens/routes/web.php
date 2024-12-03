@@ -5,6 +5,8 @@ use App\Http\Controllers\CaregiverHomeControlller;
 use App\Http\Controllers\DoctorHomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AdminReport;
+
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employee.index');
 
@@ -15,6 +17,9 @@ Route::get('/hi', function () {
 Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.index');
 Route::get('/DoctorH/search', [DoctorHomeController::class, 'search'])->name('doctor.search');
 Route::get('/DoctorH/til-date', [DoctorHomeController::class, 'searchTilDate'])->name('doctor.searchTilDate');
+
+Route::get('/AdminReport', [AdminReport::class, 'index'])->name('AdminReport.index');
+
 Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 
 Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);

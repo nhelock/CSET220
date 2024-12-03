@@ -25,7 +25,6 @@
                         <tr>
                             <th>Patient's Name</th>
                             <th>Doctor's Name</th>
-                            <th>Doctor' Appointment</th>
                             <th>Caregiver's Name</th>
                             <th>Morning Med</th>
                             <th>Afternoon Med</th>
@@ -39,7 +38,6 @@
                         <tr>
                             <td>Jim</td>
                             <td>Ahmi</td>
-                            <td>Kyle</td>
                             <td>George</td>
                             <td>Med1</td>
                             <td>Med2</td>
