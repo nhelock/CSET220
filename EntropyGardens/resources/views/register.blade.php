@@ -1,9 +1,16 @@
-<html>
+{{-- <html>
     <head>
         <title>Register Today</title>
         <link rel="stylesheet" href="/CSS/register.css">
     </head>
-    <body>
+    <body> --}}
+
+    @extends('layouts.app')
+
+    @section('title', 'Register')
+
+    @section('content')
+        <link rel="stylesheet" href="/CSS/register.css">
         <div class=container>
             <div>
                 <a href='/'><button class='cancel-button'>X</button></a>
@@ -97,7 +104,7 @@
 
             </form>
         </div>
-    </body>
+    {{-- </body> --}}
     <script>
         function togglePatientFields() {
             const role = document.getElementById('roleID').value;
@@ -109,6 +116,7 @@
             }
         }
     </script>
-</html>
+    @endsection
+{{-- </html> --}}
 
 
