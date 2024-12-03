@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Family Member's Home</title>
-    <link rel="stylesheet" href="/css/familyHome.css" />
+    <link rel="stylesheet" href="/CSS/familyHome.css">
   </head>
   <body>
     <div class="container">

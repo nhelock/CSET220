@@ -1,0 +1,108 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+    color: #4c236d;
+}
+body{
+    background-color: #f0f0f0;
+}
+
+h1{
+    bottom:0;
+    font-size:32;
+    text-align:center;
+}
+
+label{
+    /* font-weight:bold; */
+    font-family: Arial, sans-serif;
+    float:left;
+    text-shadow: 0px 0px 3px white;
+    font-weight:bold;
+}
+
+input, select{
+    float:right;
+    border-style:outset;
+    border-width:3px;
+    border-color:rgb(154, 67, 154);
+    background-color:gray;
+    color:white;
+}
+::placeholder{
+    color:rgb(214, 214, 214);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 20vh;
+}
+
+.cancel-button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 50px;
+    text-decoration: none;
+    border: none;
+    background: none;
+}
+.cancel-button:hover{
+    cursor:pointer;
+    color:violet;
+}
+
+.input-holder{
+    margin-bottom:10px;
+}
+
+.title-holder{
+    margin:auto;
+    display:flex;
+    flex-direction:column-reverse;
+    height:20vh;
+    width:fit-content;
+    text-align:center;
+}
+
+.register-box{
+    margin:auto;
+    margin-top:10vh;
+    padding:3vh;
+    background-color:mediumslateblue;
+    width:fit-content;
+    border-radius: 0px 30px 0px 30px;
+    box-shadow: 0px 0px 20px 10px rgb(86, 58, 84);
+
+}
+#patients p{
+    font-weight:bold;
+    font-size:24;
+    margin-bottom:5px;
+}
+
+.submit-holder{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-top:1vh;
+}
+
+.submit{
+    padding:5px;
+    border-radius:3px;
+    border-style:ridge;
+    margin:auto;
+    position:relative;
+    color:#4c236d;
+}
+.submit:hover{
+    cursor:pointer;
+    background-color:rgb(205, 165, 200);
+    color:white;
+}
