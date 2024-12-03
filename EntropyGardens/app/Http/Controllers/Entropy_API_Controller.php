@@ -91,6 +91,7 @@ class Entropy_API_Controller extends Controller
 
         }
         //THIS IS NOT CURRENTLY WORKING, REMEMBER TO FIX THIS IN THE MORNING
+        //Fixed it :uwucat:
         if($request->input('roleID') == 5){
             users::create($data);
             // $finder = users::where('userID', '=', 1)->first();
@@ -107,6 +108,22 @@ class Entropy_API_Controller extends Controller
         users::create($data);
         return redirect('/');
 
+    }
+
+    public function login(Request $request){
+        $email = $request->email_input;
+        $password = $request->password_input;
+
+        $compare = users::where('email', '=', $email)->first();
+        if($compare){
+            if($email == $compare->email && $password == $compare->password){
+                $session_user = users::where('userID', '=', "$compare->userID")->join('roles', 'users.roleID', '=', 'roles.roleID')->first();
+                return $session_user;
+            }
+        }
+        return "Not Logged In";
+        
+        
     }
 
 

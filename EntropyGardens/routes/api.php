@@ -24,3 +24,5 @@ Route::get('/employees/search/role', [EmployeeController::class, 'searchJoin']);
 //I want you to know this didn't work for 20 minutes because the form said "approval" and the route said "approve"
 //Kill me
 Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
+
+Route::post('/login', [Entropy_API_Controller::class, 'login']);
