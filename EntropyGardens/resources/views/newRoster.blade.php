@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New Roster</title>
-    <link rel="stylesheet" href="/css/newRoster.css" />
+    <link rel="stylesheet" href="" />
   </head>
   <body>
     <div class="container">
       <h2>New Roster</h2>
-      <form>
+      <form method="POST" action="">
         <div class="form-group">
           <label for="date">Date</label>
           <input type="date" id="date" />
