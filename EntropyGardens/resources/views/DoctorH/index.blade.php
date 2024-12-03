@@ -120,7 +120,7 @@ form.search_by {
     gap: 10px;
 }
 
-form.search_by input[type=text] {
+form.search_by input[type=text][type=date] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -194,8 +194,8 @@ form.seacrh_by::after {
                     </tbody>
                 </table>
             </div>
-            <form class="search_by" action="action_page.php">
-                <input type="text" placeholder="Search For Patient" name="search">
+            <form class="search_by" action="{{ 'doctor.search' }}" method="GET">
+                <input type="text" placeholder="Search By Last Name" name="search" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -216,8 +216,8 @@ form.seacrh_by::after {
                     </tbody>
                 </table>
             </div>
-            <form class="search_by" action="action_page.php" id="form2">
-                <input type="text" placeholder="Til Date" name="search">
+            <form class="search_by" action="{{ route('doctor.searchTilDate') }}" id="form2" method="GET">
+                <input type="date" placeholder="Search Appointments Til Date" name="til_date" required>
                 <button type="submit">Submit</button>
             </form>
         </div>

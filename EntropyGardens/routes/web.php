@@ -13,6 +13,8 @@ Route::get('/hi', function () {
     return 'Hi';
 });
 Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.index');
+Route::get('/DoctorH/search', [DoctorHomeController::class, 'search'])->name('doctor.search');
+Route::get('/DoctorH/til-date', [DoctorHomeController::class, 'searchTilDate'])->name('doctor.searchTilDate');
 Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 
 Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);
