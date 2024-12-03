@@ -26,7 +26,13 @@ class Entropy_API_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'date' => 'required|date',
+            'supervisor' => 'required',
+            'doctor' => 'required',
+            'caregiver1' => 'required',
+            'caregiver2' => 'required'
+        ]);
     }
 
     /**
@@ -161,6 +167,6 @@ class Entropy_API_Controller extends Controller
         return view('/login', ['data' => $error]);
     }
 
-
+    public function newRoster()
 }
 

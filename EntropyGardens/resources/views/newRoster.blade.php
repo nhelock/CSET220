@@ -10,6 +10,7 @@
     <div class="container">
       <h2>New Roster</h2>
       <form method="POST" action="">
+        @csrf
         <div class="form-group">
           <label for="date">Date</label>
           <input type="date" id="date" />
