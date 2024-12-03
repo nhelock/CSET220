@@ -147,7 +147,7 @@ class Entropy_API_Controller extends Controller
                         return redirect('/');
                     }
                     elseif(session('roleName') == 'family'){
-                        return redirect('/');
+                        return redirect('/family');
                     }
                     return redirect('/');
                     return session('userID');
