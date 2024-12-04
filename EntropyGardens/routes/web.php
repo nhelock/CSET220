@@ -18,7 +18,7 @@ Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.in
 Route::get('/DoctorH/search', [DoctorHomeController::class, 'search'])->name('doctor.search');
 Route::get('/DoctorH/til-date', [DoctorHomeController::class, 'searchTilDate'])->name('doctor.searchTilDate');
 
-Route::get('/AdminReport', [AdminReport::class, 'index'])->name('AdminReport.index');
+
 
 Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 

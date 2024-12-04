@@ -3,6 +3,13 @@
         <title>
             Doctor Home
         </title> --}}
+    @if (isset($error))
+        <div style="color: red; font-weight: bold;">
+            {{ $error }}
+        </div>
+    @endif
+    
+    
     @extends('layouts.app')
     @section('title', 'Doctors Home')
 
@@ -178,6 +185,13 @@ form.seacrh_by::after {
                         </tr>
                     </thead>
                     <tbody>
+                        @if ($patients->isEmpty())
+                        <tr>
+                            <td colspan="6" style="text-align: center">
+                                No patients found
+                            </td>
+                        </tr>
+                        @else
                         @foreach ($patients as $patient)
                         <tr>
                             <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
@@ -188,10 +202,11 @@ form.seacrh_by::after {
                             <td>{{ $patient->nightMed }}</td>
                         </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
-            <form class="search_by" action="{{ 'doctor.search' }}" method="GET">
+            <form class="search_by" action="{{ route('doctor.search') }}" method="GET">
                 <input type="text" placeholder="Search By Last Name" name="search" required>
                 <button type="submit">Submit</button>
             </form>

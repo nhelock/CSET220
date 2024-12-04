@@ -50,6 +50,15 @@ class DoctorHomeController extends Controller
             )
             ->get();
 
+            if (count($patients) === 0) {
+                return view('DoctorH.index', [
+                    'patients' => $patients,
+                    'search' => $searchName,
+                    'error' => 'No patients found'
+                ]);
+            }
+                
+
         return view('DoctorH.index', compact('patients'));
     }
 
@@ -74,7 +83,7 @@ class DoctorHomeController extends Controller
                 'prescriptions.nightMed'
                 
             )
-            ->orderBy('prescription.date', 'asc')
+            ->orderBy('prescriptions.date', 'asc')
             ->get();
 
         return view('DoctorH.index', compact('patients', 'tilDate'));
