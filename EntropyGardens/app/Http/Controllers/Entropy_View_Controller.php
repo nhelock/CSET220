@@ -41,6 +41,9 @@ class Entropy_View_Controller extends Controller
         return view('newRoster');
     }
     
+    public function additionalInfo(){
+        return view('additional');
+    }
 
     public function logout(){
         session()->flush();

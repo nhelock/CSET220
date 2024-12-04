@@ -8,8 +8,8 @@ use App\Http\Controllers\NewRosterApi;
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employee.index');
 
-Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.index');
-Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
+Route::get('/doctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.index');
+Route::get('/caregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 
 
 Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);
@@ -24,3 +24,5 @@ Route::get('/logout', [Entropy_View_Controller::class, 'logout']);
 Route::get('/newRoster/create', [NewRosterApi::class, 'create']);
 Route::post('/newRoster', [NewRosterApi::class, 'store'])->name('rosters.store');
 Route::get('/newRoster', [NewRosterApi::class, 'newRoster'])->name('newRoster');
+
+Route::get('/additional', [Entropy_View_Controller::class, 'additionalInfo']);

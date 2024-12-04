@@ -18,12 +18,7 @@ class Entropy_API_Controller extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    public function create()
-    {
-    
+        return users::all();
     }
 
     /**
@@ -39,7 +34,6 @@ class Entropy_API_Controller extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -165,5 +159,32 @@ class Entropy_API_Controller extends Controller
         $error = "Error: Email and Password do not match.";
         return view('/login', ['data' => $error]);
     }
-}
 
+    public function patientInfo(Request $request){
+        $patient = users::join('groups', 'users.userID', '=', 'groups.userID')
+            ->where('users.roleID', '=', 5) 
+            ->select(
+                'users.userID as id',
+                'users.roleID as roleID',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'groups.groupName as groups',
+                'groups.admissionDate as admission_date'
+            )->get();
+
+        if($request['search_by']){
+            $patientFound = users::join('groups', 'users.userID', '=', 'groups.userID')
+                ->where('users.roleID', '=', 5) 
+                ->select(
+                    'users.userID as id',
+                    'users.firstName as first_name',
+                    'users.lastName as last_name',
+                    'groups.groupName as groups',
+                    'groups.admissionDate as admission_date'
+                )
+                ->where('groups.' . $request['search_by'], $request['search'])
+                ->get();
+            return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
+        }
+    }
+}
