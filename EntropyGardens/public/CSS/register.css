@@ -73,6 +73,7 @@ input, select{
 .register-box{
     margin:auto;
     margin-top:10vh;
+    margin-bottom:10vh;
     padding:3vh;
     background-color:#f4a5ae;
     width:fit-content;
@@ -99,10 +100,11 @@ input, select{
     border-style:ridge;
     margin:auto;
     position:relative;
-    color:#4c236d;
+    color:white;
+    background-color:rgb(127, 96, 123);
 }
 .submit:hover{
     cursor:pointer;
     background-color:rgb(205, 165, 200);
-    color:white;
+    color:#4c236d;
 }

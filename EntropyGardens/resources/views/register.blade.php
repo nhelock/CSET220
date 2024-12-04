@@ -12,10 +12,6 @@
     @section('content')
         <link rel="stylesheet" href="/CSS/register.css">
         <div class=container>
-            <div>
-                <a href='/'><button class='cancel-button'>X</button></a>
-            </div>
-
             <div class='title-holder'>
                 <h1>Register</h1>
             </div>
