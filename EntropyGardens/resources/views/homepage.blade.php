@@ -1,63 +1,21 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> --}}
+    @extends('layouts.app')
+
+    @section('title', 'Entropy Gardens')
+
+    @section('content')
     <link rel="stylesheet" href="CSS/homepage.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <title>Entropy Gardens</title>
-  </head>
-  <body>
-    <header>
-      <div class="top-nav">
-        <!-- <div class="top-nav-list"> -->
-        <div class="top-nav-wrap">
-          <nav class="nav-container">
-            <ul class="nav-list">
-              <li><a href="#">Admin</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Locations</a></li>
-              <li><a href="#">About</a></li>
-            </ul>
-          </nav>
-          <nav class="main-login">
-            <div class="login-menu">
-              <div class="menu">
-                <div class="menu-toggle">
-                  <button type="button">
-                    <i class="bi bi-person-lines-fill"></i>
-                    <span>LOGIN</span>
-                  </div>
-                  </button>
-              </div>
-            </div>
-          </nav>
-        </div>
-        <!-- </div> -->
-      </div>
-      <div class="main-nav">
-        <div class="top-nav-list">
-          <div class="top-nav-wrap">
-            <!-- <span class="img-class">Entropy Gardens</span> -->
-            <img class="img-class" src="/images/goat.jpg" alt="Logo" />
-            <nav class="nav-container">
-              <ul class="nav-list-two">
-                <li><a href="">Find a Doctor</a></li>
-                <li><a href="">Patients & Visitors</a></li>
-                <li><a href="">Service & Treatments</a></li>
-                <li><a id="get-care-now" href="">Get Care Now</a></li>
-                <li>
-                  <a href=""><i class="bi bi-search"></i></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+  {{-- </head>
+  <body> --}}
+   
     <section class="hero">
       <div class="container">
         <div class="heading">
@@ -140,5 +98,7 @@
         </div>
       </div>
     </footer>
-  </body>
-</html>
+
+    @endsection
+  {{-- </body>
+</html> --}}
