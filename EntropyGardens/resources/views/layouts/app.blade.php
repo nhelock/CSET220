@@ -67,16 +67,38 @@
               <div class="top-nav-list">
                 <div class="top-nav-wrap">
                   <!-- <span class="img-class">Entropy Gardens</span> -->
-                  <img class="img-class" src="/images/goat.jpg" alt="Logo" />
+                  {{-- <img class="img-class" src="/images/goat.jpg" alt="Logo" /> --}}
                   <nav class="nav-container">
                     <ul class="nav-list-two">
-                      <li><a href="">Find a Doctor</a></li>
-                      <li><a href="">Patients & Visitors</a></li>
-                      <li><a href="">Service & Treatments</a></li>
-                      <li><a id="get-care-now" href="">Get Care Now</a></li>
-                      <li>
-                        <a href=""><i class="bi bi-search"></i></a>
-                      </li>
+
+                        <?php if(session('accesslevel') == 1){ ?> 
+                            <li><a href="/roles">Roles</a></li>
+                            <li><a href="/payment">Payments</a></li>
+                        <?php } ?>
+
+                        <?php if(session('accesslevel') == 1 || session('accesslevel') == 2){ ?> 
+                            <li><a href="/additional_information">Information</a></li>
+                            <li><a href="/appointments">Appointments</a></li>
+                            <li><a href="/employees">Employees</a></li>
+                            <li><a href="/approval">Approval</a></li>
+                            <li><a href="/appointments">New Roster</a></li>
+                            <li><a href="/report">Reports</a></li>
+                        <?php } ?>
+
+                        <?php if(session('accesslevel') == 1 || session('accesslevel') == 2 || session('accesslevel') == 3 || session('accesslevel') == 4){ ?> 
+                            <li><a href="/patients">Patients</a></li>
+                        <?php } ?>
+
+                        <?php if(session('accesslevel')){ ?> 
+                            <li><a href="/roster">Rosters</a></li>
+                        <?php } ?>
+                        
+                        {{-- <li><a href="">Patients & Visitors</a></li>
+                        <li><a href="">Service & Treatments</a></li>
+                        <li><a id="get-care-now" href="">Get Care Now</a></li>
+                        <li>
+                            <a href=""><i class="bi bi-search"></i></a>
+                        </li> --}}
                     </ul>
                   </nav>
                 </div>

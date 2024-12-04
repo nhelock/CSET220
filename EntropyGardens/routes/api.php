@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Entropy_API_Controller;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CaregiverHomeControlller;
 use Illuminate\Support\Facades\Route;
 
 

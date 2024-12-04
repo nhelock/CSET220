@@ -73,16 +73,7 @@ button {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* Might not need this anymore */
-.top-nav-list {
-  /* padding-right: 15px;
-  padding-left: 15px; */
-  /* margin-right: auto;
-  margin-left: auto; */
-  /* width: 1050px; */
-  /* height: 30px; */
-  /* margin: 0 60px; */
-}
+
 
 .top-nav-wrap {
   display: flex;
@@ -130,7 +121,7 @@ button {
 .nav-list-two {
   display: flex;
   font-weight: bold;
-  gap: 55px;
+  gap: 10px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -361,4 +352,14 @@ footer .footer-container .footer-bottom {
 .login_button :hover{
   cursor:pointer;
   background-color:whitesmoke;
+}
+
+.nav-list-two li{
+  border:1px solid rgb(78, 75, 75);
+  border-radius:3px;
+  box-shadow:2px 2px;
+}
+
+.nav-list-two li:hover{
+  box-shadow:none;
 }
