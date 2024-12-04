@@ -31,39 +31,39 @@
         </div>
         <div class="button-container">
           <button type=submit>Ok</button>
-          {{-- <button>Cancel</button> --}}
         </div>
       </form>
       <div class="schedule-container">
-        <div>Doctor's Name</div>
-        <div>Doctor's Appointment</div>
-        <div>Caregiver's Name</div>
-        <div>Morning Medicine</div>
-        <div class="checkbox-container">
-          <input
-            type="checkbox"
-            id="afternoon-medicine"
-            name="afternoon-medicine"
-          />
-          <label for="afternoon-medicine">Afternoon Medicine</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="night-medicine" name="night-medicine" />
-          <label for="night-medicine">Night Medicine</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="breakfast" name="breakfast" />
-          <label for="breakfast">Breakfast</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="lunch" name="lunch" />
-          <label for="lunch">Lunch</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="dinner" name="dinner" />
-          <label for="dinner">Dinner</label>
-        </div>
+        <table>
+            <tr>
+              <th>Doctor's Name</th>
+              <th>Doctor's Appointment</th>
+              <th>Caregiver's Name</th>
+              <th>Morning Medicine</th>
+              <th>Afternoon Medicine</th>
+              <th>Night Medicine</th>
+              <th>Breakfast</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+            </tr>
+            <?php if(isset($data)){ ?>
+            
+            <tr>
+              <th>{{ $data->doctorName }}</th>
+              <th>{{ $data->doctorAppointment }}</th>
+              <th>{{ $data->caregiverName }}</th>
+              <th>{{ $data->morningMedicine }}</th>
+              <th>{{ $data->afternoonMedicine }}</th>
+              <th>{{ $data->nightMedicine }}</th>
+              <th>{{ $data->breakfast }}</th>
+              <th>{{ $data->lunch }}</th>
+              <th>{{ $data->dinner }}</th>
+            </tr>
+
+            <?php } ?>
+        </table> 
       </div>
+
     </div>
   </body>
 </html>
