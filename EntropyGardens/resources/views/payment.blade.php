@@ -1,10 +1,10 @@
 <?php 
 session_start();
-function alterPayment(){
-    if(){
+// function alterPayment(){
+//     if(){
 
-    }
-}
+//     }
+// }
 
 ?>
 <html>
@@ -53,16 +53,20 @@ function alterPayment(){
     </head>
     <body>
         <h1>Payment</h1>
-        <form action="/payment" method="POST">
+        @foreach ($outstanding_balances as $o)
+        <form action="/api/payment" method="POST">
         <div class="info">
-            <p class="id">Payment ID<input type="text" name="ID"></p>
+            <p class="id">Payment ID</p>
+        {{ $o->userID }}
             <p class="due">Total Due</p>
+        {{ $o->payTab }}
             <p class="new">New Payment<input type="text" name="New"></p> 
         </div>
         <div class="buttons">
-        <button class="button1"><a href="">Ok</a></button>
+        <button class="button1" type="submit">Ok</button>
         <button class="button2"><a href="">Cancel</a></button>
         </div>
         </form>
+        @endforeach
     </body>
 </html>

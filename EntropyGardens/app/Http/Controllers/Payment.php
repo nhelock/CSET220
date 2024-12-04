@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\outstanding_balances;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Payment extends Controller
 {
@@ -13,7 +14,9 @@ class Payment extends Controller
      */
     public function index()
     {
-        //
+        return view('payment')->with([
+            "outstanding_balances" => outstanding_balances::all()
+        ]);
     }
 
     /**
@@ -21,7 +24,11 @@ class Payment extends Controller
      */
     public function store(Request $request)
     {
-        
+        DB::table("outstanding_balances")->insert([
+            "userID" => $request->userID,
+            "payTab" => $request->payTab
+        ]);
+        return back();
     }
 
     /**
@@ -38,11 +45,12 @@ class Payment extends Controller
     public function update(Request $request, string $id)
     {
         $outstanding_balances = outstanding_balances::findOrFail($id);
-        $outstanding_balances->validate([
+        $outstanding_balances->update($request->validate([
             "ID" => ["required", "unique:outstanding_balances,userID"],
-            "Due" => ["required", "unique:outstanding_balances,payTab"]
-        ]);
+            "Due" => ["required", "outstanding_balances,payTab"]
+        ]));
         return $outstanding_balances;
+        
     }
 
     /**
