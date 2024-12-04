@@ -71,6 +71,22 @@
                   <nav class="nav-container">
                     <ul class="nav-list-two">
 
+                        <?php if(session('accesslevel') == 1 || session('accesslevel') == 2){ ?> 
+                            <li><a href="/">Home</a></li>
+                        <?php } ?>
+                        <?php if(session('accesslevel') == 3){ ?> 
+                            <li><a href="/doctorH">Home</a></li>
+                        <?php } ?>
+                        <?php if(session('accesslevel') == 4){ ?> 
+                            <li><a href="/caregiverH">Home</a></li>
+                        <?php } ?>
+                        <?php if(session('accesslevel') == 5){ ?> 
+                            <li><a href="/patientH">Home</a></li>
+                        <?php } ?>
+                        <?php if(session('accesslevel') == 6){ ?> 
+                            <li><a href="/familyH">Home</a></li>
+                        <?php } ?>
+
                         <?php if(session('accesslevel') == 1){ ?> 
                             <li><a href="/roles">Roles</a></li>
                             <li><a href="/payment">Payments</a></li>
@@ -92,6 +108,12 @@
                         <?php if(session('accesslevel')){ ?> 
                             <li><a href="/roster">Rosters</a></li>
                         <?php } ?>
+
+                        <?php if(session('accesslevel' == 3)){ ?> 
+                            <li><a href="/doctor_patients">Your Patients</a></li>
+                        <?php } ?>
+
+
                         
                         {{-- <li><a href="">Patients & Visitors</a></li>
                         <li><a href="">Service & Treatments</a></li>
