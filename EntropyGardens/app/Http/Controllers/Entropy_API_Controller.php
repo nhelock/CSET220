@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\users;
 use App\Models\family_information;
 use App\Models\roles;
+use App\Models\rosters;
 use Illuminate\Http\Request;
 
 
@@ -162,6 +163,38 @@ class Entropy_API_Controller extends Controller
         return view('/login', ['data' => $error]);
         
         
+    }
+
+    public function roster(Request $request){
+        $date = $request->date;
+
+        $data = rosters::where('date', '=', $date)->first();
+
+        $doctor = users::where('userID', '=', $data['userID_Doctor'])->first();
+        $doctorName = $doctor['firstName'] . " " . $doctor['lastName'];
+        
+        $cg_1 = users::where('userID', '=', $data['userID_CG1'])->first();
+        $cg_1Name = $cg_1['firstName'] . " " . $cg_1['lastName'];
+
+        $cg_2 = users::where('userID', '=', $data['userID_CG2'])->first();
+        $cg_2Name = $cg_2['firstName'] . " " . $cg_2['lastName'];
+
+        $cg_3 = users::where('userID', '=', $data['userID_CG3'])->first();
+        $cg_3Name = $cg_3['firstName'] . " " . $cg_3['lastName'];
+
+        $cg_4 = users::where('userID', '=', $data['userID_CG4'])->first();
+        $cg_4Name = $cg_4['firstName'] . " " . $cg_4['lastName'];
+
+        $roster = [
+            'doctor' => $doctorName,
+            'cg_1' => $cg_1Name,
+            'cg_2' => $cg_2Name,
+            'cg_3' => $cg_3Name,
+            'cg_4' => $cg_4Name
+        ];
+        
+        return view('rosters_list', ['data' => $roster]);
+        // return redirect()->route('roster')->with(['data' => $roster]);
     }
 
 

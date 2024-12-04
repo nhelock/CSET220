@@ -27,3 +27,5 @@ Route::get('/employees/search/role', [EmployeeController::class, 'searchJoin']);
 Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
 
 Route::post('/login', [Entropy_API_Controller::class, 'login'])->middleware('web');
+
+Route::post('/roster', [Entropy_API_Controller::class, 'roster']);

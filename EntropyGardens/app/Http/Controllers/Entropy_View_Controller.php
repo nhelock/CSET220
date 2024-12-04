@@ -40,4 +40,15 @@ class Entropy_View_Controller extends Controller
         session()->flush();
         return redirect('/');
     }
+
+    public function roster_list(){
+        if(session('data')){
+            
+            $data = session('data');
+            return view('rosters_list', ['data' => $data]);
+        }
+        $data = session('data');
+        return view('rosters_list', ['data' => $data]);
+
+    }
 }
