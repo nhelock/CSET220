@@ -39,3 +39,6 @@ Route::get('/approval', [Entropy_View_Controller::class, 'registrationApproval']
 Route::get('/login', [Entropy_View_Controller::class, 'loginPage']);
 
 Route::get('/logout', [Entropy_View_Controller::class, 'logout']);
+
+Route::get('/roster', [Entropy_View_Controller::class, 'roster_list'])->name('roster');
+Route::post('/roster', [Entropy_View_Controller::class, 'roster_show']);
