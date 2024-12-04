@@ -3,11 +3,11 @@
 @section('title', 'Rosters')
 
 @section('content')
-
+<link rel=stylesheet href='CSS/homepage.css'>
     <h1>Rosters</h1>
 
     <h3>Search for Roster by Date:</h3>
-    <form action='/api/roster' method=POST>
+    <form action='/roster' method=POST>
         @csrf
         <input type="date" name='date' required>
         <button type=submit>Search</button>

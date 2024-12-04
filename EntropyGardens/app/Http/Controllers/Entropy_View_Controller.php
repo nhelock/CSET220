@@ -51,4 +51,11 @@ class Entropy_View_Controller extends Controller
         return view('rosters_list', ['data' => $data]);
 
     }
+
+    public function roster_show(Request $request){
+        $controller = new Entropy_API_Controller();
+
+        $data = $controller->roster($request);
+        return $data;
+    }
 }
