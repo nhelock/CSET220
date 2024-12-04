@@ -21,18 +21,17 @@ class Entropy_API_Controller extends Controller
         //
     }
 
+    public function create()
+    {
+    
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'date' => 'required|date',
-            'supervisor' => 'required',
-            'doctor' => 'required',
-            'caregiver1' => 'required',
-            'caregiver2' => 'required'
-        ]);
+        
     }
 
     /**
@@ -166,7 +165,5 @@ class Entropy_API_Controller extends Controller
         $error = "Error: Email and Password do not match.";
         return view('/login', ['data' => $error]);
     }
-
-    public function newRoster()
 }
 

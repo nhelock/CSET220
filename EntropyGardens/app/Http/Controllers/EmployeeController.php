@@ -10,7 +10,6 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-       
         $employees = users::join('salaries', 'users.userID', '=', 'salaries.userID')
             ->join('roles', 'users.roleID', '=', 'roles.roleID')
             ->select(

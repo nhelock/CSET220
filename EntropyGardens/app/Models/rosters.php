@@ -14,4 +14,5 @@ class rosters extends Model
         'userID_CG3',
         'userID_CG4'
     ];
+    public $timestamps = false; 
 }
