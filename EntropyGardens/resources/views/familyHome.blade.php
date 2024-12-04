@@ -14,24 +14,26 @@
       <p class="header-sub">
         Search Patients by entering the Patient ID and Family Code
       </p>
-      <div class="form-container">
-        <div>
-          <label for="family-code"
-            >Family code (For Patient Family Member):</label
-          >
-          <input type="text" id="family-code" name="family-code" />
+      <form action='/family' method=POST>
+        <div class="form-container">
+          <div>
+            <label for="family-code"
+              >Family code (For Patient Family Member):</label
+            >
+            <input type="text" id="family-code" name="familyCode" />
+          </div>
+          <div>
+            <label for="patient-id"
+              >Patient ID (For Patient Family Member):</label
+            >
+            <input type="text" id="patient-id" name="userID" />
+          </div>
         </div>
-        <div>
-          <label for="patient-id"
-            >Patient ID (For Patient Family Member):</label
-          >
-          <input type="text" id="patient-id" name="patient-id" />
+        <div class="button-container">
+          <button type=submit>Ok</button>
+          {{-- <button>Cancel</button> --}}
         </div>
-      </div>
-      <div class="button-container">
-        <button>Ok</button>
-        <button>Cancel</button>
-      </div>
+      </form>
       <div class="schedule-container">
         <div>Doctor's Name</div>
         <div>Doctor's Appointment</div>
