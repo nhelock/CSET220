@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Entropy_API_Controller;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CaregiverHomeControlller;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,3 +27,5 @@ Route::get('/employees/search/role', [EmployeeController::class, 'searchJoin']);
 Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
 
 Route::post('/login', [Entropy_API_Controller::class, 'login'])->middleware('web');
+
+Route::post('/roster', [Entropy_API_Controller::class, 'roster']);

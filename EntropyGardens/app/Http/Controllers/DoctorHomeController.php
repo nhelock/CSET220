@@ -11,7 +11,7 @@ class DoctorHomeController extends Controller
     public function index()
     {
        
-        $patients = users::join('prescriptions', 'users.roleID', '=', 'prescriptions.userID')
+        $patients = users::join('prescriptions', 'users.userID', '=', 'prescriptions.userID')
             ->select(
                 'users.firstName as first_name',
                 'users.lastName as last_name',
@@ -36,7 +36,7 @@ class DoctorHomeController extends Controller
 
         $searchName = $request->input('search');
 
-        $patients = users::join('prescriptions', 'users.roleID', '=', 'prescriptions.userID')
+        $patients = users::join('prescriptions', 'users.userID', '=', 'prescriptions.userID')
         ->where('users.lastName', 'LIKE', '%' .$searchName . '%')
             ->select(
                 'users.firstName as first_name',
@@ -50,6 +50,15 @@ class DoctorHomeController extends Controller
             )
             ->get();
 
+            if (count($patients) === 0) {
+                return view('DoctorH.index', [
+                    'patients' => $patients,
+                    'search' => $searchName,
+                    'error' => 'No patients found'
+                ]);
+            }
+                
+
         return view('DoctorH.index', compact('patients'));
     }
 
@@ -62,7 +71,7 @@ class DoctorHomeController extends Controller
 
         $tilDate = $request->input('til_date');
 
-        $patients = users::join('prescriptions', 'users.roleID', '=', 'prescriptions.userID')
+        $patients = users::join('prescriptions', 'users.userID', '=', 'prescriptions.userID')
         ->where('prescriptions.date', '<=', $tilDate)
             ->select(
                 'users.firstName as first_name',
@@ -74,7 +83,7 @@ class DoctorHomeController extends Controller
                 'prescriptions.nightMed'
                 
             )
-            ->orderBy('prescription.date', 'asc')
+            ->orderBy('prescriptions.date', 'asc')
             ->get();
 
         return view('DoctorH.index', compact('patients', 'tilDate'));
