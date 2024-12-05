@@ -199,6 +199,11 @@ class Entropy_API_Controller extends Controller
         return redirect('/roster');
     }
 
+    //Payment Function
+    function payment(Request $request){
+        return "Hello!";
+    }
+
 
 }
 
