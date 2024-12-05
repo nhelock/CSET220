@@ -123,30 +123,41 @@ nav li a:hover {
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Age</th>
-                <th>Emergency Contact</th>
-                <th>Emergency Contact Name</th>
+                <th>Date of Birth</th>
+                <th>Emergency Contact Relation</th>
+                <th>Emergency Contact Number</th>
                 <th>Admission Date</th>
             </tr>
             </thead>
+            @foreach($patients as $patient)
             <tr>
-                <td>1000</td>
-                <td>Jim JIm</td>
-                <td>22</td>
-                <td>Dad</td>
-                <td>Guy</td>
-                <td>12/12/12</td>
+                <td>{{ $patient->ID }}</td>
+                <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+                <td>{{ $patient->DOB }}</td>
+                <td>Need Connection</td>
+                <td>Need Connection</td>
+                <td>{{ $patient->AdmissionDate }}</td>
             </tr>
+            @endforeach
         </table>
-        <form class="search_by" action="action_page.php">
-            <input type="text" placeholder="Search By ID" name="search">
+        <form class="search_by" action="{{ route('patients.searchPatByID') }}" method="GET">
+            <input type="text" placeholder="Search By ID" name="search" required>
             <button type="submit">Submit</button>
-            <input type="text" placeholder="Search By Name" name="search">
+        </form>
+        <form class="search_by" action="{{ route('patients.searchPatByLastName') }}" method="GET">
+            <input type="text" placeholder="Search By Last Name" name="lastName">
             <button type="submit">Submit</button>
-            <input type="text" placeholder="Search By Emergency Contact Name" name="search">
+        </form>
+
+        {{-- still needs db connection --}}
+        <form class="search_by" method="GET">
+            <input type="text" placeholder="Search By Emergency Contact Number" name="eContact">
             <button type="submit">Submit</button>
-            <input type="text" placeholder="Search By Admission Date" name="search">
+        </form>
+
+        <form class="search_by" action="{{ route('patients.searchPatByDate') }}" method="GET">
+            <input type="text" placeholder="Search By Admission Date" name="date">
             <button type="submit">Submit</button>
-          </form>
+        </form>
     </body>
 </html>

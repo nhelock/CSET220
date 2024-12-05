@@ -18,7 +18,11 @@ Route::get('/DoctorH', [DoctorHomeController::class, 'index'])->name('DoctorH.in
 Route::get('/DoctorH/search', [DoctorHomeController::class, 'search'])->name('doctor.search');
 Route::get('/DoctorH/til-date', [DoctorHomeController::class, 'searchTilDate'])->name('doctor.searchTilDate');
 
-
+Route::get('/PatientsList', [EmployeeController::class, 'viewPatients']);
+Route::get('/PatientsList/search-by-id', [EmployeeController::class, 'searchPatByID'])->name('patients.searchPatByID');
+Route::get('/PatientsList/search-by-Lname', [EmployeeController::class, 'searchPatByLastName'])->name('patients.searchPatByLastName');
+//Route::get('/PatientsList/search-by-e_contact', [EmployeeController::class, 'searchPatByCon'])->name('patients.searchPatByCon);
+Route::get('/PatientsList/search-by-date', [EmployeeController::class, 'searchPatByDate'])->name('patients.searchPatByDate');
 
 Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 
