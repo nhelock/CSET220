@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/CSS/homepage.css" />
+{{-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> --}}
+    @extends('layouts.app')
+
+    @section('title', 'Entropy Gardens')
+
+    @section('content')
+    <link rel="stylesheet" href="CSS/homepage.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -59,6 +70,10 @@
       </div>
     </header>
     <secion class="hero">
+  {{-- </head>
+  <body> --}}
+   
+    <section class="hero">
       <div class="container">
         <div class="heading">
           <span>Entropy Gardens Medical Center</span>
@@ -66,6 +81,7 @@
         </div>
       </div>
     </secion>
+    </section>
     <section class="info">
       <div class="contact-container">
         <div class="contact-info">
@@ -142,3 +158,7 @@
     </footer>
   </body>
 </html>
+
+    @endsection
+  {{-- </body>
+</html> --}}

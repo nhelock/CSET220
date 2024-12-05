@@ -12,9 +12,10 @@ class CaregiverHomeControlller extends Controller
     public function index()
     {
        
-        $patients = users::join('itineraries', 'users.roleID', '=', 'itineraries.userID')
+        $patients = users::join('itineraries', 'users.userID', '=', 'itineraries.userID')
             ->select(
                 'users.firstName as first_name',
+                'users.lastName as last_name',
                 'itineraries.morningMed',
                 'itineraries.afternoonMed',
                 'itineraries.nightMed',

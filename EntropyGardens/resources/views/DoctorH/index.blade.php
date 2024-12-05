@@ -1,8 +1,19 @@
-<html>
+{{-- <html>
     <head>
         <title>
             Doctor Home
-        </title>
+        </title> --}}
+    @if (isset($error))
+        <div style="color: red; font-weight: bold;">
+            {{ $error }}
+        </div>
+    @endif
+    
+    
+    @extends('layouts.app')
+    @section('title', 'Doctors Home')
+
+    @section('content')
         <style>
             
 * {
@@ -120,7 +131,7 @@ form.search_by {
     gap: 10px;
 }
 
-form.search_by input[type=text] {
+form.search_by input[type=text][type=date] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -153,14 +164,7 @@ form.seacrh_by::after {
 
 
         </style>
-    </head>
-    <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Other">Other</a></li>
-                <li><a href="#Other">Other</a></li>
-            </ul>
-    </nav>
+    {{-- </head> --}}
     <div>
         <div class="heading">
         <h1>
@@ -181,6 +185,13 @@ form.seacrh_by::after {
                         </tr>
                     </thead>
                     <tbody>
+                        @if ($patients->isEmpty())
+                        <tr>
+                            <td colspan="6" style="text-align: center">
+                                No patients found
+                            </td>
+                        </tr>
+                        @else
                         @foreach ($patients as $patient)
                         <tr>
                             <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
@@ -191,11 +202,12 @@ form.seacrh_by::after {
                             <td>{{ $patient->nightMed }}</td>
                         </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
-            <form class="search_by" action="action_page.php">
-                <input type="text" placeholder="Search For Patient" name="search">
+            <form class="search_by" action="{{ route('doctor.search') }}" method="GET">
+                <input type="text" placeholder="Search By Last Name" name="search" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -216,12 +228,13 @@ form.seacrh_by::after {
                     </tbody>
                 </table>
             </div>
-            <form class="search_by" action="action_page.php" id="form2">
-                <input type="text" placeholder="Til Date" name="search">
+            <form class="search_by" action="{{ route('doctor.searchTilDate') }}" id="form2" method="GET">
+                <input type="date" placeholder="Search Appointments Til Date" name="til_date" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
     </div>
-    </body>
+    
     <script src="script.js"></script>
-</html>
+{{-- </html> --}}
+@endsection
