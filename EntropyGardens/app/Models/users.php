@@ -16,4 +16,9 @@ class users extends Model
         'DOB',
         'isRegistered'
     ];
+
+    public function balance()
+    {
+        return $this->hasOne(outstanding_balances::class, 'UserID', 'UserID');
+    }
 }

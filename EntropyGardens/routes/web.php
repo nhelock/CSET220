@@ -11,6 +11,8 @@ Route::get('/login', [PageController::class, 'Login'])->name("login");
 
 Route::get('/patientofdoctor', [PageController::class, 'PatientofDoctor']);
 
+Route::get('/patientshome', [PageController::class, 'PatientsHome']);
+
 // Route::get('/payment', [PageController::class, 'Payment']);
 
 // Route::get('/patients_home', function () {

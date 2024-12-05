@@ -44,7 +44,6 @@
 </head>
 <body>
     <h1>Patient of Doctor</h1>
-    @foreach ($perscriptions as $p)
     <div class="old">
         <div class="flex-box">
             <p>Date</p>
@@ -80,6 +79,5 @@
         </div>
     </div>
     </form>
-    @endforeach
 </body>
 </html>

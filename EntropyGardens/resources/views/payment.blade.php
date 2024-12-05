@@ -35,12 +35,15 @@
             .button1:hover, .button2:hover {
                 background-color: #f4a5ae;
             }
-            .id, .due, .new {
+            .id, .due, .new, .tab {
                 border: 2px solid #3b429f;
                 border-radius: 0px 20px;
                 background-color: #3b429f;
                 margin-right: 85%;
                 padding-left: 10px;
+            }
+            .tab {
+                color: #f5d7e3;
             }
         </style>
     </head>
@@ -56,7 +59,7 @@
                 <input value="{{ $o->payTab }}" name="payTab" readonly>
                 <input value="{{ $o->balanceID }}" name="balanceID" readonly type="hidden">
 
-                <p class="new">New Payment<input type="text" value="" name="New" required></p> 
+                <p class="new">New Payment<input type="text" name="New" required></p> 
             </div>
             <div class="buttons">
                 <input class="button1" type="submit" value="Ok">
@@ -64,5 +67,11 @@
             </div>
         </form>
         @endforeach
+        {{-- <form action="">
+            <div class="newtab">
+                <p class="tab">New Tab<input type="text" name="Tab" required></p>
+                <input class="button1" type="submit" value="Add Tab">
+            </div>
+        </form> --}}
     </body>
 </html>

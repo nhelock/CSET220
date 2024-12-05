@@ -13,4 +13,9 @@ class outstanding_balances extends Model
         'userID',
         'payTab'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(users::class, 'UserID', 'UserID');
+    }
 }

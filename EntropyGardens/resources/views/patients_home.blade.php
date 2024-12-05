@@ -43,8 +43,7 @@
 </head>
 <body>
     <h1>Patient's Home</h1>
-    @foreach ($itineraries as $i)
-    <form action="" method="POST">
+    <form action="/api/patients_home" method="POST">
     <div class="form_fields">
         <p class="id">Patient ID <input type="text"></p>
         <p class="date">Date <input type="text"></p>
@@ -66,6 +65,5 @@
         </table>
     </div>
     </form>
-    @endforeach
 </body>
 </html>
