@@ -2,15 +2,6 @@
 ?>
 <html>
     <head>
-        {{-- <script>
-            function PaymentSubmit() {
-                var x = document.forms["Alter"].value;
-                if (x == "") {
-                    alert("Please fill at least one form if possible!");
-                    return false;
-                }
-            }
-        </script> --}}
         <style>
             body {
                 display: block;
@@ -67,10 +58,9 @@
 
                 <p class="new">New Payment<input type="text" value="" name="New" required></p> 
             </div>
-
             <div class="buttons">
                 <input class="button1" type="submit" value="Ok">
-                {{-- <button class="button2"><a href="">Cancel</a></button> --}}
+                <button class="button2"><a href="">Cancel</a></button>
             </div>
         </form>
         @endforeach
