@@ -7,4 +7,9 @@ use App\Http\Controllers\RoleTransfer;
 
 Route::resource('/role', RoleTransfer::class);
 
-Route::resource('/payment', Payment::class);
+Route::resource('payment', Payment::class);
+
+// Route::resource('/patientofdoctor', );
+Route::post('/payment', [Payment::class, "alterPayment"]);
+
+// Route::resource('')

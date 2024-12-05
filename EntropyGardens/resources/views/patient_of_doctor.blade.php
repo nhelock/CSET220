@@ -41,10 +41,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
-    
 </head>
 <body>
     <h1>Patient of Doctor</h1>
+    @foreach ($perscriptions as $p)
     <div class="old">
         <div class="flex-box">
             <p>Date</p>
@@ -79,5 +79,7 @@
             </div>
         </div>
     </div>
+    </form>
+    @endforeach
 </body>
 </html>

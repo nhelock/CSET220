@@ -1,14 +1,16 @@
 <?php 
-session_start();
-// function alterPayment(){
-//     if(){
-
-//     }
-// }
-
 ?>
 <html>
     <head>
+        {{-- <script>
+            function PaymentSubmit() {
+                var x = document.forms["Alter"].value;
+                if (x == "") {
+                    alert("Please fill at least one form if possible!");
+                    return false;
+                }
+            }
+        </script> --}}
         <style>
             body {
                 display: block;
@@ -55,17 +57,21 @@ session_start();
         <h1>Payment</h1>
         @foreach ($outstanding_balances as $o)
         <form action="/api/payment" method="POST">
-        <div class="info">
-            <p class="id">Payment ID</p>
-        {{ $o->userID }}
-            <p class="due">Total Due</p>
-        {{ $o->payTab }}
-            <p class="new">New Payment<input type="text" name="New"></p> 
-        </div>
-        <div class="buttons">
-        <button class="button1" type="submit">Ok</button>
-        <button class="button2"><a href="">Cancel</a></button>
-        </div>
+            <div class="info">
+                <p class="id">Payment ID</p>
+                <input value="{{ $o->userID }}" name="userID" readonly>
+
+                <p class="due">Total Due</p>
+                <input value="{{ $o->payTab }}" name="payTab" readonly>
+                <input value="{{ $o->balanceID }}" name="balanceID" readonly type="hidden">
+
+                <p class="new">New Payment<input type="text" value="" name="New" required></p> 
+            </div>
+
+            <div class="buttons">
+                <input class="button1" type="submit" value="Ok">
+                {{-- <button class="button2"><a href="">Cancel</a></button> --}}
+            </div>
         </form>
         @endforeach
     </body>
