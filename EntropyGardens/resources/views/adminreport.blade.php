@@ -36,6 +36,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            @foreach ($users as $user)
                             <td>Jim</td>
                             <td>Ahmi</td>
                             <td>George</td>
