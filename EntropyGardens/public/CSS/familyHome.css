@@ -54,10 +54,10 @@ body {
 .button-container button:hover {
   background-color: #595fb1;
 }
-.button-container button:last-child {
+/* .button-container button:last-child {
   background-color: #9f3b3b;
   margin-left: 10px;
-}
+} */
 
 .button-container button:last-child:hover {
   background-color: #e65252;
