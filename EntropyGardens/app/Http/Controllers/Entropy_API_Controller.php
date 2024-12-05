@@ -6,7 +6,9 @@ use App\Models\users;
 use App\Models\family_information;
 use App\Models\roles;
 use App\Models\rosters;
+use App\Models\outstanding_balances;
 use Illuminate\Http\Request;
+
 
 
 
@@ -62,6 +64,14 @@ class Entropy_API_Controller extends Controller
         if($confirm == 'true'){
             if($role == 'patient'){
                 family_information::where('userID', $userID)->update(['isRegistered' => true]);
+
+                $entry = new outstanding_balances();
+
+                $entry->userID = $userID;
+                $entry->payTab = 0;
+                $entry->last_updated = now()->toDateString();
+   
+                $entry->save();
             }
 
             users::where('userID', $userID)->update(['isRegistered' => true]);
@@ -198,6 +208,25 @@ class Entropy_API_Controller extends Controller
         }
         return redirect('/roster');
     }
+
+    //Payment Function
+    function payment(Request $request) {
+        $userID = $request->userID;
+        $amount = $request->amount;
+    
+        // Fetch the user's record from the outstanding_balances table
+        $user = outstanding_balances::where('userID', '=', $userID)->first();
+    
+        // Check if the user exists
+        if ($user) {
+            // Update the payTab by subtracting $amount
+            $user->payTab = $user->payTab - $amount;
+            $user->save(); // Save the updated value to the database
+        }
+    
+        return redirect('/payment');
+    }
+    
 
 
 }

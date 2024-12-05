@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class outstanding_balances extends Model
 {
+    protected $primaryKey = 'userID';
+    public $timestamps = false;
     protected $fillable = [
         'userID',
-        'payTab'
+        'payTab',
+        'last_updated'
     ];
 }

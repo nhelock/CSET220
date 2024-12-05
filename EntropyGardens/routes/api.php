@@ -29,3 +29,6 @@ Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
 Route::post('/login', [Entropy_API_Controller::class, 'login'])->middleware('web');
 
 Route::post('/roster', [Entropy_API_Controller::class, 'roster']);
+
+//Payment System.  I'm sad boss.
+Route::post('/payment', [Entropy_API_Controller::class, 'payment']);
