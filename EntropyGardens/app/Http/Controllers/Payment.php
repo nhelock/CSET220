@@ -26,7 +26,10 @@ class Payment extends Controller
      */
     public function store(Request $request)
     {
-        
+        DB::table("outstanding_balances")->insert([
+            "payTab" => $request->payTab
+        ]);
+        return back();
     }
 
     /**
