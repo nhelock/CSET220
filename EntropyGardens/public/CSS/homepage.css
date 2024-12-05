@@ -164,13 +164,6 @@ button {
 .menu-toggle span {
   padding-left: 5px;
 }
-#get-care-now {
-  color: rgb(136, 48, 136);
-}
-
-#get-care-now:hover {
-  color: rgb(134, 74, 134);
-}
 
 .menu .bi {
   font-size: 20px;

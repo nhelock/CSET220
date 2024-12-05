@@ -28,7 +28,7 @@ thead{
 
 
 /* NAV BAR */
-nav ul {
+/* nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -37,9 +37,9 @@ nav ul {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-}
+} */
   
-nav li {
+/* nav li {
     float: left;
 }
   
@@ -49,16 +49,21 @@ nav li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
+} */
   
-nav li a:hover {
+/* nav li a:hover {
     background-color: #783d59;
-}
+} */
 
-.heading h1 {
+.heading{
+    display:flex;
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 25px;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+    /* background-color:red; */
+    width:50%;
+    
 }
 
 /* BUTTONS */
