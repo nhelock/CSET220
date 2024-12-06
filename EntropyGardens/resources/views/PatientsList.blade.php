@@ -1,8 +1,7 @@
-<html>
-    <head>
-        <title>
-            Patients Page
-        </title>
+@extends('layouts.app')
+    @section('title', 'Paitents Page')
+
+    @section('content')
         <style>
             
 * {
@@ -105,13 +104,6 @@ nav li a:hover {
 }
         </style>
     </head>
-    <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Other">Other</a></li>
-                <li><a href="#Other">Other</a></li>
-            </ul>
-    </nav>
     <body>
         <div class="heading">
         <h1>
@@ -134,8 +126,8 @@ nav li a:hover {
                 <td>{{ $patient->ID }}</td>
                 <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
                 <td>{{ $patient->DOB }}</td>
-                <td>Blah</td>
-                <td>Blah</td>
+                <td>{{ $patient->relation }}</td>
+                <td>{{ $patient->EmergencyContactNumber }}</td>
                 <td>{{ $patient->AdmissionDate }}</td>
             </tr>
             @endforeach
@@ -160,4 +152,4 @@ nav li a:hover {
             <button type="submit">Submit</button>
         </form>
     </body>
-</html>
+@endsection
