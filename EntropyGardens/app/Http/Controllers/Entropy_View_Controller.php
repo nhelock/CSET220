@@ -176,4 +176,11 @@ class Entropy_View_Controller extends Controller
         return view('familyHome', ['code_form' => $request->userID]);
     }
 
+    //Functions for Patient's Home Page
+    public function patientHome(Request $request){
+        if($request->date){
+        }
+        return view('patientH');
+    }
+
 }
