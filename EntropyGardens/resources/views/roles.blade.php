@@ -4,33 +4,52 @@
 
 @section('content')
 
-<h1>Roles</h1>
+<link rel=stylesheet href='/CSS/roles.css'>
 
-<table>
+<table class='role-content'>
     <tr>
-        <th>Role Name:</th>
-        <th>Access Level:</th>
+        <th class='role-headings'>Roles</th>
+        <th class='role-headings'>Add New Role</th>
+    </tr>
+    <tr>
+        <td>
+            <table class='role-table'>
+                <tr>
+                    <th>Role Name:</th>
+                    <th>Access Level:</th>
+                </tr>
+            
+                <?php foreach($roles as $role){ ?>
+            
+                <tr>
+                    <td>{{ $role->roleName }}</td>
+                    <td>{{ $role->accesslevel }}</td>
+                </tr>  
+            
+                <?php } ?>
+            </table>
+        </td>
+        <td class='form-td'>
+            <form action=/api/roles method=POST>
+                <table class='form-table'>
+                    <tr>
+                        <td><label for=accesslevel>Access Level:</label></td>
+                        <td><input type=number name=accesslevel class=role-input></td>
+                    </tr>
+                    <tr>
+                        <td><label for=roleName>Role Name:</label></td>
+                        <td><input type=text name=roleName class=role-input></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type=submit>Add New Role</button></td>
+                    </tr>
+                </table>
+                
+            </form>
+        </td>
     </tr>
 
-    <?php foreach($roles as $role){ ?>
-
-    <tr>
-        <td>{{ $role->roleName }}</td>
-        <td>{{ $role->accesslevel }}</td>
-    </tr>  
-
-    <?php } ?>
 </table>
-
-<h1>Add New Role:</h1>
-<form action=/api/roles method=POST>
-    <label for=accesslevel>Access Level:</label>
-    <input type=number name=accesslevel>
-
-    <label for=roleName>Role Name:</label>
-    <input type=text name=roleName>
-
-    <button type=submit>Add New Role</button>
-</form>
 
 @endsection
