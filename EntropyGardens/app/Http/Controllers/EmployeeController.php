@@ -148,7 +148,7 @@ class EmployeeController extends Controller
         $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
                     
                     ->join('groups', 'users.userID', '=', 'groups.userID')
-                    ->where('users.roleID', 5)
+                    
                     ->where('users.userID', $searchID)
                     ->select(
                         'users.userID as ID',
@@ -173,7 +173,7 @@ class EmployeeController extends Controller
         $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
                     
                     ->join('groups', 'users.userID', '=', 'groups.userID')
-                    ->where('users.roleID', 5)
+                    
                     ->where('users.lastName', $searchID)
                     ->select(
                         'users.userID as ID',
@@ -223,7 +223,7 @@ class EmployeeController extends Controller
         $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
                     
                     ->join('groups', 'users.userID', '=', 'groups.userID')
-                    ->where('users.roleID', 5)
+                    
                     ->where('group.admissionDate', $searchID)
                     ->select(
                         'users.userID as ID',
