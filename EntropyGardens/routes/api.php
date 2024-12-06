@@ -28,6 +28,8 @@ Route::POST('/approval', [Entropy_API_Controller::class, 'approve']);
 
 Route::post('/login', [Entropy_API_Controller::class, 'login'])->middleware('web');
 
+Route::get('/additional/search/id', [Entropy_API_Controller::class, 'patientInfo']);
+
 Route::post('/roster', [Entropy_API_Controller::class, 'roster']);
 
 //Payment System.  I'm sad boss.

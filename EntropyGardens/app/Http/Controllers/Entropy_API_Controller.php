@@ -210,14 +210,12 @@ class Entropy_API_Controller extends Controller
         $userID = $request->userID;
         $amount = $request->amount;
     
-        // Fetch the user's record from the outstanding_balances table
         $user = outstanding_balances::where('userID', '=', $userID)->first();
     
-        // Check if the user exists
         if ($user) {
-            // Update the payTab by subtracting $amount
+
             $user->payTab = $user->payTab - $amount;
-            $user->save(); // Save the updated value to the database
+            $user->save(); 
         }
     
         return redirect('/payment');
@@ -238,6 +236,33 @@ class Entropy_API_Controller extends Controller
         return redirect("/roles");
 
     }
+
+    //Restored Additional Info of Patient Function (Please stop deleting stuff with merges lmaoooo)
+    public function patientInfo(Request $request){
+        $patient = users::join('groups', 'users.userID', '=', 'groups.userID')
+            ->where('users.roleID', '=', 5) 
+            ->select(
+                'users.userID as id',
+                'users.roleID as roleID',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'groups.groupName as groups',
+                'groups.admissionDate as admission_date'
+            )->get();
+    if($request['search_by']){
+        $patientFound = users::join('groups', 'users.userID', '=', 'groups.userID')
+            ->where('users.roleID', '=', 5) 
+            ->select(
+                'users.userID as id',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'groups.groupName as groups',
+                'groups.admissionDate as admission_date'
+            )
+            ->where('groups.' . $request['search_by'], $request['search'])
+            ->get();
+        return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
+    }}
     
 
 
