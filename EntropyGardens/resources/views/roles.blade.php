@@ -31,7 +31,7 @@
         </td>
         <td class='form-td'>
             <form action=/api/roles method=POST>
-                <table class='form-table'>
+                <table class='form-table' style="padding-left: 10px">
                     <tr>
                         <td><label for=accesslevel>Access Level:</label></td>
                         <td><input type=number name=accesslevel class=role-input></td>

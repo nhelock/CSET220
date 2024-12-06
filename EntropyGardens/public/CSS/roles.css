@@ -1,27 +1,33 @@
-.role-content{
-    margin:auto;
-    margin-top:10vh;
-    padding:40px;
-    border-radius:20px;
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(213,150,180,1) 91%, rgba(168,87,126,1) 100%);
+.role-content {
+    margin: auto;
+    margin-top: 10vh;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(213, 150, 180, 1) 91%,
+        rgba(168, 87, 126, 1) 100%
+    );
 }
 
-.role-table{
-    border:10px solid #3b429f;
-    border-style:groove;
-    border-radius:10px;
-    padding:10px;
+.role-table {
+    border: 10px solid #3b429f;
+    border-style: groove;
+    border-radius: 10px;
+    padding: 10px;
     border-collapse: separate;
     border-spacing: 15px 0px;
 }
 
-.role-headings{
-    font-size:32;
-    color:#3b429f;
+.role-headings {
+    font-size: 32;
+    color: #3b429f;
 }
 
-.role-table th, .role-table td {
+.role-table th,
+.role-table td {
     padding: 10px;
     text-align: left;
 }
@@ -39,27 +45,27 @@
     color: white;
 }
 
-.form-table button{
-    margin-top:30px;
-    background-color:#aa7dce;
-    color:white;
-    border:3px solid #202249;
-    border-radius:2px;
-    padding:5px;
-    font-size:20;
+.form-table button {
+    margin-top: 30px;
+    background-color: #aa7dce;
+    color: white;
+    border: 3px solid #202249;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 20;
 }
-.form-table button:hover{
-    cursor:pointer;
-    background-color:white;
-    color:black;
+.form-table button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
 }
-.form-td{
-    padding-top:30px;
-    vertical-align:top;
+.form-td {
+    padding-top: 30px;
+    vertical-align: top;
 }
-.role-input{
-    border:3px solid #3b429f;
-    border-radius:3px;
-    padding:5px;
-    margin-left:10px;
+.role-input {
+    border: 3px solid #3b429f;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 10px;
 }
