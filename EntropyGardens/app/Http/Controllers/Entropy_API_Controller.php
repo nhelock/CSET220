@@ -6,7 +6,9 @@ use App\Models\users;
 use App\Models\family_information;
 use App\Models\roles;
 use App\Models\rosters;
+use App\Models\outstanding_balances;
 use Illuminate\Http\Request;
+
 
 
 
@@ -61,6 +63,14 @@ class Entropy_API_Controller extends Controller
         if($confirm == 'true'){
             if($role == 'patient'){
                 family_information::where('userID', $userID)->update(['isRegistered' => true]);
+
+                $entry = new outstanding_balances();
+
+                $entry->userID = $userID;
+                $entry->payTab = 0;
+                $entry->last_updated = now()->toDateString();
+   
+                $entry->save();
             }
 
             users::where('userID', $userID)->update(['isRegistered' => true]);
@@ -194,31 +204,41 @@ class Entropy_API_Controller extends Controller
         }
         return redirect('/roster');
     }
+
+    //Payment Function
+    function payment(Request $request) {
+        $userID = $request->userID;
+        $amount = $request->amount;
     
-        public function patientInfo(Request $request){
-            $patient = users::join('groups', 'users.userID', '=', 'groups.userID')
-                ->where('users.roleID', '=', 5) 
-                ->select(
-                    'users.userID as id',
-                    'users.roleID as roleID',
-                    'users.firstName as first_name',
-                    'users.lastName as last_name',
-                    'groups.groupName as groups',
-                    'groups.admissionDate as admission_date'
-                )->get();
-        if($request['search_by']){
-            $patientFound = users::join('groups', 'users.userID', '=', 'groups.userID')
-                ->where('users.roleID', '=', 5) 
-                ->select(
-                    'users.userID as id',
-                    'users.firstName as first_name',
-                    'users.lastName as last_name',
-                    'groups.groupName as groups',
-                    'groups.admissionDate as admission_date'
-                )
-                ->where('groups.' . $request['search_by'], $request['search'])
-                ->get();
-            return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
+        // Fetch the user's record from the outstanding_balances table
+        $user = outstanding_balances::where('userID', '=', $userID)->first();
+    
+        // Check if the user exists
+        if ($user) {
+            // Update the payTab by subtracting $amount
+            $user->payTab = $user->payTab - $amount;
+            $user->save(); // Save the updated value to the database
         }
+    
+        return redirect('/payment');
     }
+
+    //Function to add new role to the database
+    public function roleAdd(Request $request){
+        $roleName = $request->roleName;
+        $accesslevel = $request->accesslevel;
+
+        $entry = new roles();
+
+        $entry->roleName = $roleName;
+        $entry->accesslevel = $accesslevel;
+
+        $entry->save();
+
+        return redirect("/roles");
+
+    }
+    
+
+
 }

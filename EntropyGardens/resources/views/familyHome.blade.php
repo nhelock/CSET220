@@ -14,54 +14,56 @@
       <p class="header-sub">
         Search Patients by entering the Patient ID and Family Code
       </p>
-      <div class="form-container">
-        <div>
-          <label for="family-code"
-            >Family code (For Patient Family Member):</label
-          >
-          <input type="text" id="family-code" name="family-code" />
+      <form action='/family' method=POST>
+        <div class="form-container">
+          <div>
+            <label for="family-code"
+              >Family code (For Patient Family Member):</label
+            >
+            <input type="text" id="family-code" name="familyCode" />
+          </div>
+          <div>
+            <label for="patient-id"
+              >Patient ID (For Patient Family Member):</label
+            >
+            <input type="text" id="patient-id" name="userID" />
+          </div>
         </div>
-        <div>
-          <label for="patient-id"
-            >Patient ID (For Patient Family Member):</label
-          >
-          <input type="text" id="patient-id" name="patient-id" />
+        <div class="button-container">
+          <button type=submit>Ok</button>
         </div>
-      </div>
-      <div class="button-container">
-        <button>Ok</button>
-        <button>Cancel</button>
-      </div>
+      </form>
       <div class="schedule-container">
-        <div>Doctor's Name</div>
-        <div>Doctor's Appointment</div>
-        <div>Caregiver's Name</div>
-        <div>Morning Medicine</div>
-        <div class="checkbox-container">
-          <input
-            type="checkbox"
-            id="afternoon-medicine"
-            name="afternoon-medicine"
-          />
-          <label for="afternoon-medicine">Afternoon Medicine</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="night-medicine" name="night-medicine" />
-          <label for="night-medicine">Night Medicine</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="breakfast" name="breakfast" />
-          <label for="breakfast">Breakfast</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="lunch" name="lunch" />
-          <label for="lunch">Lunch</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="dinner" name="dinner" />
-          <label for="dinner">Dinner</label>
-        </div>
+        <table>
+            <tr>
+              <th>Doctor's Name</th>
+              <th>Doctor's Appointment</th>
+              <th>Caregiver's Name</th>
+              <th>Morning Medicine</th>
+              <th>Afternoon Medicine</th>
+              <th>Night Medicine</th>
+              <th>Breakfast</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+            </tr>
+            <?php if(isset($data)){ ?>
+            
+            <tr>
+              <th>{{ $data->doctorName }}</th>
+              <th>{{ $data->doctorAppointment }}</th>
+              <th>{{ $data->caregiverName }}</th>
+              <th>{{ $data->morningMedicine }}</th>
+              <th>{{ $data->afternoonMedicine }}</th>
+              <th>{{ $data->nightMedicine }}</th>
+              <th>{{ $data->breakfast }}</th>
+              <th>{{ $data->lunch }}</th>
+              <th>{{ $data->dinner }}</th>
+            </tr>
+
+            <?php } ?>
+        </table> 
       </div>
+
     </div>
   </body>
 </html>

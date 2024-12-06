@@ -22,6 +22,10 @@
     box-sizing: border-box;
 }
 
+.space{
+    padding: 40px;
+}
+
 /* TABLE*/
 
 .table-form-container {
@@ -165,6 +169,9 @@ form.seacrh_by::after {
 
         </style>
     {{-- </head> --}}
+    <div class="space">
+
+    </div>
     <div>
         <div class="heading">
         <h1>
@@ -222,8 +229,8 @@ form.seacrh_by::after {
                     </thead>
                     <tbody>
                         @foreach ( $patients as $patient )
-                            <td>{{ $patients->first_name }} {{ $patients->last_name }}</td>
-                            <td>{{ $patients->date }}</td>
+                            <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+                            <td>{{ $patient->date }}</td>
                         @endforeach
                     </tbody>
                 </table>

@@ -13,13 +13,14 @@ body {
 
 /* Heading */
 header {
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
     text-align: right;
     position: relative;
     z-index: 99;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }
 
 button {
@@ -129,13 +130,6 @@ button {
 
 .menu-toggle span {
     padding-left: 5px;
-}
-#get-care-now {
-    color: rgb(136, 48, 136);
-}
-
-#get-care-now:hover {
-    color: rgb(134, 74, 134);
 }
 
 .menu .bi {

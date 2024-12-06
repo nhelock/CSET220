@@ -22,8 +22,9 @@ class DoctorHomeController extends Controller
                 'prescriptions.nightMed'
                 
             )
-            ->get();
 
+            
+            ->get();
         return view('DoctorH.index', compact('patients'));
     }
 

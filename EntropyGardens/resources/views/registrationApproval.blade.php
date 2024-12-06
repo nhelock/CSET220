@@ -1,21 +1,20 @@
-<html>
+{{-- <html>
     <head>
         <title>
             Registation Approval
         </title>
-        <link rel="stylesheet" href="/CSS/regApproval.css">
+        
     </head>
-    <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Other">Other</a></li>
-                <li><a href="#Other">Other</a></li>
-            </ul>
-    </nav>
-    <body>
+    <body> --}}
+        @extends('layouts.app')
+
+        @section('title', 'Entropy Gardens')
+    
+        @section('content')
+        <link rel="stylesheet" href="/CSS/regApproval.css">
         <div class="heading">
         <h1>
-            Registation Approval
+            Registration Approval
         </h1>
         </div>
         <table>
@@ -71,7 +70,10 @@
 
 
             </tbody>
+            
         </table>
-    </body>
-    <script src="script.js"></script>
-</html>
+        <script src="script.js"></script>
+        @endsection
+    {{-- </body>
+    
+</html> --}}
