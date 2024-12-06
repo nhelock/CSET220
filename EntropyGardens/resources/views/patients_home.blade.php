@@ -43,9 +43,10 @@
 </head>
 <body>
     <h1>Patient's Home</h1>
-    <form action="/api/patients_home" method="POST">
+    {{-- @foreach ($appointments as $a) --}}
+    <form action="/patients_home" method="POST">
     <div class="form_fields">
-        <p class="id">Patient ID <input type="text"></p>
+        <p class="id">Patient ID <input value=""></p>
         <p class="date">Date <input type="text"></p>
         <p class="name">Patient Name <input type="text"></p>
     </div>
@@ -62,8 +63,20 @@
                 <th>Lunch</th>
                 <th>Dinner</th>
             </tr>
+            @foreach ($intineraries as $i)
+                <tr>
+                    <td> {{ $i->userID }}</td>
+                    <td> {{ $i->morningMed }}</td>
+                    <td> {{ $i->AfternoonMed }}</td>
+                    <td> {{ $i->nightMed }}</td>
+                    <td> {{ $i->breakfast }}</td>
+                    <td> {{ $i->lunch}}</td>
+                    <td> {{ $i->dinner}}</td>
+                </tr>
+            @endforeach
         </table>
     </div>
     </form>
+    {{-- @endforeach --}}
 </body>
 </html>
