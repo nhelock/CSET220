@@ -113,7 +113,7 @@ class Entropy_View_Controller extends Controller
         return view('roles', ['roles' => $roles]);
     }
 
-    //Start of Patient Functions
+    //Start of Family of Patient Functions
     public function familyHome(){
         return view('familyHome');
     }
