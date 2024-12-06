@@ -116,7 +116,7 @@ td .c-button{
 .form-container {
     display: flex;
     flex-direction: row;
-    width:fit-content; 
+    width:fit-content;
     gap: 10px;
     padding:10px;
     justify-content:space-between;
@@ -261,7 +261,6 @@ form.update_salary button:hover {
                 <input type="hidden" name="search_by" value="roleName">
                 <button type="submit">Search</button>
             </form>
-       
 
             <form class="search_by" action='/api/employees/search/salary' method="GET">
                 @csrf
@@ -272,7 +271,7 @@ form.update_salary button:hover {
             </form>
         </div>
 
-        <?php      
+        <?php
             if(isset($foundUsers)){        
         ?>
         <div class="results">
@@ -290,7 +289,6 @@ form.update_salary button:hover {
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach ($foundUsers as $foundUser)
                         <tr>
                             <td>{{ $foundUser->id }}</td>

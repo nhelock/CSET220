@@ -21,7 +21,7 @@ class Entropy_API_Controller extends Controller
      */
     public function index()
     {
-        //
+        return users::all();
     }
 
     /**
@@ -29,7 +29,7 @@ class Entropy_API_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -37,7 +37,6 @@ class Entropy_API_Controller extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -171,13 +170,10 @@ class Entropy_API_Controller extends Controller
         }}
         $error = "Error: Email and Password do not match.";
         return view('/login', ['data' => $error]);
-        
-        
     }
-
     public function roster(Request $request){
         $date = $request->date;
-
+        
         $data = rosters::where('date', '=', $date)->first();
         if($data){
             $doctor = users::where('userID', '=', $data['userID_Doctor'])->first();
@@ -185,16 +181,16 @@ class Entropy_API_Controller extends Controller
             
             $cg_1 = users::where('userID', '=', $data['userID_CG1'])->first();
             $cg_1Name = $cg_1['firstName'] . " " . $cg_1['lastName'];
-    
+            
             $cg_2 = users::where('userID', '=', $data['userID_CG2'])->first();
             $cg_2Name = $cg_2['firstName'] . " " . $cg_2['lastName'];
     
             $cg_3 = users::where('userID', '=', $data['userID_CG3'])->first();
             $cg_3Name = $cg_3['firstName'] . " " . $cg_3['lastName'];
-    
+            
             $cg_4 = users::where('userID', '=', $data['userID_CG4'])->first();
             $cg_4Name = $cg_4['firstName'] . " " . $cg_4['lastName'];
-    
+            
             $roster = [
                 'doctor' => $doctorName,
                 'cg_1' => $cg_1Name,
@@ -214,20 +210,60 @@ class Entropy_API_Controller extends Controller
         $userID = $request->userID;
         $amount = $request->amount;
     
-        // Fetch the user's record from the outstanding_balances table
         $user = outstanding_balances::where('userID', '=', $userID)->first();
     
-        // Check if the user exists
         if ($user) {
-            // Update the payTab by subtracting $amount
+
             $user->payTab = $user->payTab - $amount;
-            $user->save(); // Save the updated value to the database
+            $user->save(); 
         }
     
         return redirect('/payment');
     }
+
+    //Function to add new role to the database
+    public function roleAdd(Request $request){
+        $roleName = $request->roleName;
+        $accesslevel = $request->accesslevel;
+
+        $entry = new roles();
+
+        $entry->roleName = $roleName;
+        $entry->accesslevel = $accesslevel;
+
+        $entry->save();
+
+        return redirect("/roles");
+
+    }
+
+    //Restored Additional Info of Patient Function (Please stop deleting stuff with merges lmaoooo)
+    public function patientInfo(Request $request){
+        $patient = users::join('groups', 'users.userID', '=', 'groups.userID')
+            ->where('users.roleID', '=', 5) 
+            ->select(
+                'users.userID as id',
+                'users.roleID as roleID',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'groups.groupName as groups',
+                'groups.admissionDate as admission_date'
+            )->get();
+    if($request['search_by']){
+        $patientFound = users::join('groups', 'users.userID', '=', 'groups.userID')
+            ->where('users.roleID', '=', 5) 
+            ->select(
+                'users.userID as id',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'groups.groupName as groups',
+                'groups.admissionDate as admission_date'
+            )
+            ->where('groups.' . $request['search_by'], $request['search'])
+            ->get();
+        return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
+    }}
     
 
 
 }
-

@@ -93,16 +93,16 @@
                         <?php } ?>
 
                         <?php if(session('accesslevel') == 1 || session('accesslevel') == 2){ ?> 
-                            <li><a href="/additional_information">Information</a></li>
+                            <li><a href="/additional">Information</a></li>
                             <li><a href="/appointments">Appointments</a></li>
                             <li><a href="/employees">Employees</a></li>
                             <li><a href="/approval">Approval</a></li>
-                            <li><a href="/appointments">New Roster</a></li>
+                            <li><a href="/newRoster">New Roster</a></li>
                             <li><a href="/report">Reports</a></li>
                         <?php } ?>
 
                         <?php if(session('accesslevel') == 1 || session('accesslevel') == 2 || session('accesslevel') == 3 || session('accesslevel') == 4){ ?> 
-                            <li><a href="/patients">Patients</a></li>
+                            <li><a href="/PatientsList">Patients</a></li>
                         <?php } ?>
 
                         <?php if(session('accesslevel')){ ?> 
