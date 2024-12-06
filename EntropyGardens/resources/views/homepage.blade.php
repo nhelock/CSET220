@@ -22,53 +22,6 @@
     <title>Entropy Gardens</title>
   </head>
   <body>
-    <header>
-      <div class="top-nav">
-        <!-- <div class="top-nav-list"> -->
-        <div class="top-nav-wrap">
-          <nav class="nav-container">
-            <ul class="nav-list">
-              <li><a href="#">Admin</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Locations</a></li>
-              <li><a href="#">About</a></li>
-            </ul>
-          </nav>
-          <nav class="main-login">
-            <div class="login-menu">
-              <div class="menu">
-                <div class="menu-toggle">
-                  <button type="button">
-                    <i class="bi bi-person-lines-fill"></i>
-                    <span>LOGIN</span>
-                  </div>
-                  </button>
-              </div>
-            </div>
-          </nav>
-        </div>
-        <!-- </div> -->
-      </div>
-      <div class="main-nav">
-        <div class="top-nav-list">
-          <div class="top-nav-wrap">
-            <!-- <span class="img-class">Entropy Gardens</span> -->
-            <img class="img-class" src="/images/goat.jpg" alt="Logo" />
-            <nav class="nav-container">
-              <ul class="nav-list-two">
-                <li><a href="">Find a Doctor</a></li>
-                <li><a href="">Patients & Visitors</a></li>
-                <li><a href="">Service & Treatments</a></li>
-                <li><a id="get-care-now" href="">Get Care Now</a></li>
-                <li>
-                  <a href=""><i class="bi bi-search"></i></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
     <secion class="hero">
   {{-- </head>
   <body> --}}
