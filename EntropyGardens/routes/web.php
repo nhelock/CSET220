@@ -48,3 +48,5 @@ Route::get('/roster', [Entropy_View_Controller::class, 'roster_list'])->name('ro
 Route::post('/roster', [Entropy_View_Controller::class, 'roster_show']);
 
 Route::get('/payment', [Entropy_View_Controller::class, 'payment']);
+
+Route::get('/roles', [Entropy_View_Controller::class, 'roles']);

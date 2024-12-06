@@ -70,29 +70,35 @@ class Entropy_View_Controller extends Controller
     //This is the start of the payment system.
     //I'm still mad I'm doing this when I helped someone through the entire thing and that wasn't good enough apparently?
     public function payment(){
-    $patients = outstanding_balances::join('users', 'users.userID', '=', 'outstanding_balances.userID')->get();
+        $patients = outstanding_balances::join('users', 'users.userID', '=', 'outstanding_balances.userID')->get();
 
-    foreach ($patients as $patient) {
+        foreach ($patients as $patient) {
 
-        $lastUpdated = \Carbon\Carbon::parse($patient->last_updated);
-        $today = \Carbon\Carbon::today();
-        $today_fix = $today->toDateString();
+            $lastUpdated = \Carbon\Carbon::parse($patient->last_updated);
+            $today = \Carbon\Carbon::today();
+            $today_fix = $today->toDateString();
 
-        if ($lastUpdated->lt($today)){
-            $daysDifference = $lastUpdated->diffInDays($today);
-
-
-            outstanding_balances::where('userID', $patient->userID)
-                ->increment('payTab', 10 * $daysDifference);
+            if ($lastUpdated->lt($today)){
+                $daysDifference = $lastUpdated->diffInDays($today);
 
 
-            outstanding_balances::where('userID', $patient->userID)
-                ->update(['last_updated' => $today_fix]);
+                outstanding_balances::where('userID', $patient->userID)
+                    ->increment('payTab', 10 * $daysDifference);
+
+
+                outstanding_balances::where('userID', $patient->userID)
+                    ->update(['last_updated' => $today_fix]);
+            }
         }
+
+        $patients = outstanding_balances::join('users', 'users.userID', '=', 'outstanding_balances.userID')->get();
+        return view('payment', ['patients' => $patients]);
     }
 
-    $patients = outstanding_balances::join('users', 'users.userID', '=', 'outstanding_balances.userID')->get();
-    return view('payment', ['patients' => $patients]);
-}
+    public function roles(){
+        $roles = roles::all();
+
+        return view('roles', ['roles' => $roles]);
+    }
 
 }

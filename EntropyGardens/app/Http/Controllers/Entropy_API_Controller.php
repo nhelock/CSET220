@@ -226,6 +226,22 @@ class Entropy_API_Controller extends Controller
     
         return redirect('/payment');
     }
+
+    //Function to add new role to the database
+    public function roleAdd(Request $request){
+        $roleName = $request->roleName;
+        $accesslevel = $request->accesslevel;
+
+        $entry = new roles();
+
+        $entry->roleName = $roleName;
+        $entry->accesslevel = $accesslevel;
+
+        $entry->save();
+
+        return redirect("/roles");
+
+    }
     
 
 
