@@ -134,8 +134,8 @@ nav li a:hover {
                 <td>{{ $patient->ID }}</td>
                 <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
                 <td>{{ $patient->DOB }}</td>
-                <td>Need Connection</td>
-                <td>Need Connection</td>
+                <td>Blah</td>
+                <td>Blah</td>
                 <td>{{ $patient->AdmissionDate }}</td>
             </tr>
             @endforeach
