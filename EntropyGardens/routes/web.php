@@ -29,6 +29,13 @@ Route::get('/PatientsList/search-by-date', [EmployeeController::class, 'searchPa
 Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
 
 Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);
+Route::post('/family', [Entropy_View_Controller::class, 'familyPatientSearch']);
+Route::post('/family/search', [Entropy_View_Controller::class, 'familyRosterSearch']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', [Entropy_View_Controller::class, 'displayHome'])->middleware('web');
 Route::get('/test', [Entropy_View_Controller::class, 'test']);
 Route::get('/register', [Entropy_View_Controller::class, 'register']);
@@ -48,3 +55,4 @@ Route::post('/roster', [Entropy_View_Controller::class, 'roster_show']);
 Route::get('/payment', [Entropy_View_Controller::class, 'payment']);
 
 Route::get('/roles', [Entropy_View_Controller::class, 'roles']);
+

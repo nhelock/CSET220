@@ -32,5 +32,5 @@ Route::post('/roster', [Entropy_API_Controller::class, 'roster']);
 
 //Payment System.  I'm sad boss.
 Route::post('/payment', [Entropy_API_Controller::class, 'payment']);
-
+//Role System.
 Route::post('/roles', [Entropy_API_Controller::class, 'roleAdd']);

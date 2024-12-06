@@ -15,6 +15,7 @@
         Search Patients by entering the Patient ID and Family Code
       </p>
       <form action='/family' method=POST>
+        @csrf
         <div class="form-container">
           <div>
             <label for="family-code"
@@ -26,13 +27,28 @@
             <label for="patient-id"
               >Patient ID (For Patient Family Member):</label
             >
-            <input type="text" id="patient-id" name="userID" />
+            <input type="number" id="patient-id" name="userID" />
           </div>
         </div>
         <div class="button-container">
           <button type=submit>Ok</button>
         </div>
       </form>
+
+      <?php if(isset($code_form)){ ?>
+      <h1>Patient Found!  Search Schedule by Date:</h1>
+      <h3>Enter a Date:</h3>
+
+      <form action='/family/search' method=POST>
+        @csrf
+        <label for=date>Date:</label>
+        <input type=date name=date required>
+        <input type=hidden name=userID value={{ $code_form }}>
+        <button type=submit>Search</button>
+      </form>
+
+      <?php } if(isset($data)){ ?>
+
       <div class="schedule-container">
         <table>
             <tr>
@@ -46,18 +62,17 @@
               <th>Lunch</th>
               <th>Dinner</th>
             </tr>
-            <?php if(isset($data)){ ?>
             
             <tr>
-              <th>{{ $data->doctorName }}</th>
-              <th>{{ $data->doctorAppointment }}</th>
-              <th>{{ $data->caregiverName }}</th>
-              <th>{{ $data->morningMedicine }}</th>
-              <th>{{ $data->afternoonMedicine }}</th>
-              <th>{{ $data->nightMedicine }}</th>
-              <th>{{ $data->breakfast }}</th>
-              <th>{{ $data->lunch }}</th>
-              <th>{{ $data->dinner }}</th>
+              <th>{{ $data['doctorName'] }}</th>
+              <th>{{ $data['doctorAppointment'] }}</th>
+              <th>{{ $data['caregiverName'] }}</th>
+              <th>{{ $data['morningMedicine'] == 1 ? 'Yes' : 'No'  }}</th>
+              <th>{{ $data['afternoonMedicine'] == 1 ? 'Yes' : 'No'  }}</th>
+              <th>{{ $data['nightMedicine'] == 1 ? 'Yes' : 'No'  }}</th>
+              <th>{{ $data['breakfast'] == 1 ? 'Yes' : 'No'  }}</th>
+              <th>{{ $data['lunch'] == 1 ? 'Yes' : 'No'  }}</th>
+              <th>{{ $data['dinner'] == 1 ? 'Yes' : 'No'  }}</th>
             </tr>
 
             <?php } ?>

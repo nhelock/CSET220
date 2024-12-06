@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\roles;
 use App\Models\users;
 use App\Models\outstanding_balances;
+use App\Models\family_Information;
+use App\Models\itineraries;
+use App\Models\groups;
+use App\Models\rosters;
+use App\Models\appointments;
 use Carbon\Carbon;
 
 
@@ -24,9 +29,7 @@ class Entropy_View_Controller extends Controller
         return view('register', ['inputs' => $inputs]);
     }
 
-    public function familyHome(){
-        return view('familyHome');
-    }
+
 
     public function registrationApproval(){
         if(session('accesslevel') == 1){
@@ -108,6 +111,69 @@ class Entropy_View_Controller extends Controller
         $roles = roles::all();
 
         return view('roles', ['roles' => $roles]);
+    }
+
+    //Start of Patient Functions
+    public function familyHome(){
+        return view('familyHome');
+    }
+
+    public function familyPatientSearch(Request $request){
+        $data = family_information::where('userID', '=', $request->userID)
+        ->where('familyCode', '=', $request->familyCode)->first();
+
+        if($data){
+            return view('familyHome', ['code_form' => $data['userID']]);
+        }
+        return redirect('/family');
+    }
+
+    public function familyRosterSearch(Request $request){
+        $data = itineraries::where('userID', '=', $request->userID)->where('date', '=', $request->date)->first();
+        
+        if($data){
+            $group = groups::where('userID', '=', $data['userID'])->first();
+
+            $groupName = $group['groupName'];
+            $roster = rosters::where('date', '=', $data['date'])->first();
+
+
+            $doctor = users::where('userID', '=', $roster['userID_Doctor'])->select('firstName', 'lastName')->first();
+            if($group == 'Alpha'){
+                $caregiver = users::where('userID', '=', $roster['userID_CG1'])->select('firstName', 'lastName')->first();
+            }
+            elseif($group == 'Bravo'){
+                $caregiver = users::where('userID', '=', $roster['userID_CG2'])->select('firstName', 'lastName')->first();
+            }
+            elseif($group == 'Charlie'){
+                $caregiver = users::where('userID', '=', $roster['userID_CG3'])->select('firstName', 'lastName')->first();
+            }
+            else{
+                $caregiver = users::where('userID', '=', $roster['userID_CG4'])->select('firstName', 'lastName')->first();
+            }
+            
+            $appointment = appointments::where('userID_Patient', '=', $data['userID'])->where('date', '=', $data['date'])->first();
+            if($appointment){
+                $is_appointment = 'Yes';
+            }
+            else{
+                $is_appointment = 'No';
+            }
+            $new_data = [
+                'doctorName' => $doctor['firstName'] .  " " . $doctor['lastName'],
+                'doctorAppointment' => $is_appointment,
+                'caregiverName' => $caregiver['firstName'] . " " . $caregiver['lastName'],
+                'morningMedicine' => $data['morningMed'],
+                'afternoonMedicine' => $data['afternoonMed'],
+                'nightMedicine' => $data['nightMed'],
+                'breakfast' => $data['breakfast'],
+                'lunch' => $data['lunch'],
+                'dinner' => $data['dinner']
+            ];
+            // return $new_data;
+            return view('familyHome', ['code_form' => $group['userID'], 'data' => $new_data]);
+        }
+        return view('familyHome', ['code_form' => $request->userID]);
     }
 
 }
