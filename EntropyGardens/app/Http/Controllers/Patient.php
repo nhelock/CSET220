@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class Patient extends Controller
 {
-    function patientsHome(){
-        DB::table('itineraries');
-    }
+    // function patientsHome(Request $request){
+    //     $request->
+    // }
+
 }
