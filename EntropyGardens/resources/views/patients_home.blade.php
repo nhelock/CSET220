@@ -44,9 +44,9 @@
     <h1>Patient's Home</h1>
     <form action="/patients_home" method="POST">
         <div class="form_fields">
-            <p class="id">Patient ID <input value=""></p>
+            <p class="id">Patient ID <input value="{{ $userID_Patient }}"></p>
             <p class="date">Date <input type="date" value="{{ $date }}"></p>
-            <p class="name">Patient Name <input value="  "></p>
+            <p class="name">Patient Name <input type="text" value="{{ $firstName }} {{ $lastName }}"></p>
         </div>
         <div class="new">
             <table>
@@ -75,5 +75,3 @@
     </form>
 </body>
 </html>
-
-{{-- {{ $roleName }} --}}
