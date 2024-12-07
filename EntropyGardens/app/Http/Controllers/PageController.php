@@ -32,8 +32,6 @@ class PageController extends Controller
         ->join('users', 'users.user_id', '=', 'itineraries.user_id')
         ->select('CONCAT(users.firstName, users.lastName) as caregivers name', 'itineraries.morningMed', 'itineraries.afternoonMed', 'itineraries.nightMed', 'itineraries.lunch', 'itineraries.dinner')
         ->get();
-
-        
     }
     
     function Payment(){

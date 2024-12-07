@@ -11,7 +11,6 @@
             border: 2px solid #3b429f;
             border-radius: 0px 20px;
             background-color: #3b429f;
-            
         }
         .form_fields {
             color: #f5d7e3;
@@ -44,26 +43,37 @@
 <body>
     <h1>Patient's Home</h1>
     <form action="/patients_home" method="POST">
-    <div class="form_fields">
-        <p class="id">Patient ID <input value=""></p>
-        <p class="date">Date <input type="date" value="{{ $date }}"></p>
-        <p class="name">Patient Name <input type="text"></p>
-    </div>
-    <div class="new">
-        <table>
-            <tr>
-                <th>Doctor's Name</th>
-                <th>Doctor's Appointment</th>
-                <th>Caregiver's Name</th>
-                <th>Morning Medicine</th>
-                <th>Afternoon Medicine</th>
-                <th>Night Medicine</th>
-                <th>Breakfast</th>
-                <th>Lunch</th>
-                <th>Dinner</th>
-            </tr>
-        </table>
-    </div>
+        <div class="form_fields">
+            <p class="id">Patient ID <input value=""></p>
+            <p class="date">Date <input type="date" value="{{ $date }}"></p>
+            <p class="name">Patient Name <input value="  "></p>
+        </div>
+        <div class="new">
+            <table>
+                <tr>
+                    <th>Caregiver's Name</th>
+                    <th>Morning Medicine</th>
+                    <th>Afternoon Medicine</th>
+                    <th>Night Medicine</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                </tr>
+                @foreach($data as $d)
+                <tr>
+                    <td>{{ $d->firstName }} {{ $d->lastName }}</td>
+                    <td>{{ $d->morningMed }}</td>
+                    <td>{{ $d->afternoonMed }}</td>
+                    <td>{{ $d->nightMed }}</td>
+                    <td>{{ $d->breakfast }}</td>
+                    <td>{{ $d->lunch }}</td>
+                    <td>{{ $d->dinner }}</td>
+                </tr>
+                @endforeach
+            </table>
+        </div>
     </form>
 </body>
 </html>
+
+{{-- {{ $roleName }} --}}
