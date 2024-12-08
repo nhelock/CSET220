@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* TABLE*/
+
+.table-form-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.table-container {
+    width: 70%;
+}
+
+
+
+tr:hover {background-color: #F5D7E3;}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+thead{
+    background-color: #F5D7E3;
+}
+
+
+
+
+/* BUTTONS */
+
+
+
+td .button{
+    width:fit-content;
+    padding: 5px;
+    background: #3b429f;
+    color: white;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    overflow: visible;
+
+}
+
+.button :hover{
+    background: #aa7dce;
+}
+
+td .c-button{
+    width:fit-content;
+    padding: 5px;
+    background: #3b429f;
+    color: white;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    overflow: visible;
+}
+
+/* FORM */
+.form-container {
+    display: flex;
+    flex-direction: row;
+    width:fit-content;
+    gap: 10px;
+    padding:10px;
+    justify-content:space-between;
+}
+
+form.search_by {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form.search_by input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 150%;
+    background: #f1f1f1;
+}
+  
+form.search_by button {
+    float: left;
+    width: 100;
+    padding: 10px;
+    background: #3b429f;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+  
+form.search_by button:hover {
+    background: #aa7dce;
+}
+  
+form.update_salary {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form.update_salary input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+  
+form.update_salary button {
+    float: left;
+    width: 100;
+    padding: 10px;
+    background: #3b429f;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+  
+form.update_salary button:hover {
+    background: #aa7dce;
+}

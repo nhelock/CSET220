@@ -261,6 +261,8 @@ class Entropy_API_Controller extends Controller
             )
             ->where('groups.' . $request['search_by'], $request['search'])
             ->get();
+        return view('additional', ['patientFound' => $patientFound]);
+        return $patientFound;
         return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
     }}
     

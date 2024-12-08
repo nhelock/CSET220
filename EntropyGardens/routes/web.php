@@ -58,3 +58,5 @@ Route::get('/roles', [Entropy_View_Controller::class, 'roles']);
 
 Route::get('/patient', [Entropy_View_Controller::class, 'patientHome']);
 
+Route::get('/additional/search/id', [Entropy_View_Controller::class, 'additionalSearchID']);
+

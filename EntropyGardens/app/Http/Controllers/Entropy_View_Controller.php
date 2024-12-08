@@ -183,4 +183,15 @@ class Entropy_View_Controller extends Controller
         return view('patientH');
     }
 
+    //Function for Additional Information of Patient
+    public function additionalSearchID(Request $request){
+        $controller = new Entropy_API_Controller();
+
+        $data = $controller->patientInfo($request);
+
+        return $data;
+
+        return view('additional', ['patientFound' => $data]);
+    }
+
 }
