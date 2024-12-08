@@ -7,22 +7,7 @@
 
     <p>Welcome to the Payment Page, {{ session('firstName') }}!</p>
 
-    <div class="table-form-container">
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th>UserID</th>
-                    <th>Name</th>
-                    <th>Payment Due</th>
-                </tr>
-                <?php if(isset($patients)){foreach($patients as $patient){ ?>
-                
-                <tr>
-                    <td>{{ $patient->userID }}</td>
-                    <td>{{ $patient->firstName }} {{ $patient->lastName }}</td>
-                    <td>{{ $patient->payTab }}</td>
-                </tr>
-
+    
     <div class="table-form-container">
         <div class="table-container">
             <table>
@@ -70,9 +55,6 @@
             </form>
         </div>
     </div>
-                <button type=submit>Submit Payment</button>
-            </form>
-        </div>
-    </div>
+
 
 @endsection
