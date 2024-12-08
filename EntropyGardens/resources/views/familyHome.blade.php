@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Family Member's Home</title>
-    <link rel="stylesheet" href="/CSS/familyHome.css">
-  </head>
-  <body>
+@extends('layouts.app')
+
+@section('title', 'Family Member\'s Home')
+
+@section('content')
+    <link rel="stylesheet" href={{ asset("/CSS/familyHome.css") }}>
     <div class="container">
       <div class="header">
         <h1>Family Member's Home</h1>
@@ -80,5 +77,4 @@
       </div>
 
     </div>
-  </body>
-</html>
+@endsection
