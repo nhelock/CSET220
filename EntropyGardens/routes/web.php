@@ -40,3 +40,6 @@ Route::get('/newRoster', [NewRosterApi::class, 'newRoster'])->name('newRoster');
 Route::get('/additional', [Entropy_View_Controller::class, 'additionalInfo']);
 Route::get('/roster', [Entropy_View_Controller::class, 'roster_list'])->name('roster');
 Route::post('/roster', [Entropy_View_Controller::class, 'roster_show']);
+
+Route::get('/appointments', [Entropy_View_Controller::class, 'doctorsAppointment']);
+

@@ -199,80 +199,62 @@ form.update_salary button:hover {
     <div>
         <div class="heading">
         <h1>
-            Additional Infomation of Patient 
+            Appointments Infomation of Patient 
         </h1>
         </div>
-
-        {{-- <div class="table-form-container">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Group</th>
-                            <th>Admission Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($patient as $patients)
-                        <tr>
-                            <td>{{$patients->userID}}</td>
-                            <td>{{$patients->first_name}} {{$patients->last_name}}</td>
-                            <td>{{$patients->last_name}}</td>
-                            <td>{{$patients->group}}</td>
-                            <td>{{$patients->admission_date}}</td>
-                        </tr>
-                      @endforeach
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div> --}}
-    
         <div class='form-container'>
-            <form class="search_by" action='/api/additional/search/id' method="GET">
+            <form class="search_by" action='/api/appointments/search/date' method="GET">
                 @csrf
-                <label for="search">Search By ID:</label>
-                <input type="text" id="search" name="search" placeholder="ID">
+                <label for="search">Search By Date:</label>
+                <input type="text" id="search" name="search" placeholder="Date">
                 <input type="hidden" name="search_by" value="userID">
                 <button type="submit">Search</button>
             </form>
         </div>
-        <?php 
-        if(isset($patientFound)){
+
+        <?php
+        if(isset($appointments)){
         ?>
         <div class="results">
             <div class='heading'>
-                <h1>Found User</h1>
+                <h1>Found Appointments</h1>
             </div>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>Patient ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Group</th>
-                            <th>Admission Date</th>
+                            <th>Patient Name</th>
+                            <th>Appointment Date</th>
+                            <th>Doctor</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($patientFound as $patientFounds)
+                        @forelse ($appointments as $appointment)
                         <tr>
-                            <td>{{$patientFounds->id}}</td>
-                            <td>{{$patientFounds->first_name}} {{$patientFounds->last_name}}</td>
-                            <td>{{$patientFounds->last_name}}</td>
-                            <td>{{$patientFounds->groups}}</td>
-                            <td>{{$patientFounds->admission_date}}</td>
+                            <td>{{$appointment->patient_id}}</td>
+                            <td>{{$appointment->patient_firstName}} {{$appointment->patient_lastName}}</td>
+                            <td>{{$appointment->date}}</td>
+                            <td>
+                                @if($appointment->doctor_firstName)
+                                    {{$appointment->doctor_firstName}} {{$appointment->doctor_lastName}}
+                                @else
+                                    <select name="doctor_{{$appointment->appointmentID}}" required>
+                                        <option value="">Select Doctor</option>
+                                        @foreach ($doctors as $doctor)
+                                            <option value="{{$doctor->userID}}">
+                                                {{$doctor->firstName}} {{$doctor->lastName}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @endif
+                            </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="4">{{ $message ?? 'No appointments found' }}</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

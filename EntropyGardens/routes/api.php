@@ -30,3 +30,5 @@ Route::post('/login', [Entropy_API_Controller::class, 'login'])->middleware('web
 
 Route::get('/additional/search/id', [Entropy_API_Controller::class, 'patientInfo']);
 Route::post('/roster', [Entropy_API_Controller::class, 'roster']);
+
+Route::get('/appointments/search/date', [Entropy_API_Controller::class, 'appointments']);

@@ -67,4 +67,8 @@ class Entropy_View_Controller extends Controller
         $data = $controller->roster($request);
         return $data;
     }
+
+    public function doctorsAppointment() {
+        return view('doctorsAppointment');
+    }
 }

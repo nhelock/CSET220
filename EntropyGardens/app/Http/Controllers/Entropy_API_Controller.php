@@ -6,8 +6,8 @@ use App\Models\users;
 use App\Models\family_information;
 use App\Models\roles;
 use App\Models\rosters;
+use App\Models\appointments;
 use Illuminate\Http\Request;
-
 
 
 class Entropy_API_Controller extends Controller
@@ -35,6 +35,7 @@ class Entropy_API_Controller extends Controller
      */
     public function show(string $id)
     {
+
     }
 
     /**
@@ -195,17 +196,16 @@ class Entropy_API_Controller extends Controller
         return redirect('/roster');
     }
     
-        public function patientInfo(Request $request){
-            $patient = users::join('groups', 'users.userID', '=', 'groups.userID')
-                ->where('users.roleID', '=', 5) 
-                ->select(
-                    'users.userID as id',
-                    'users.roleID as roleID',
-                    'users.firstName as first_name',
-                    'users.lastName as last_name',
-                    'groups.groupName as groups',
-                    'groups.admissionDate as admission_date'
-                )->get();
+    public function patientInfo(Request $request){
+        $patient = users::join('groups', 'users.userID', '=', 'groups.userID')
+            ->where('users.roleID', '=', 5) 
+            ->select(
+                'users.userID as id',
+                'users.roleID as roleID',
+                'users.firstName as first_name',
+                'users.lastName as last_name',
+                'groups.admissionDate as admission_date'
+            )->get();
         if($request['search_by']){
             $patientFound = users::join('groups', 'users.userID', '=', 'groups.userID')
                 ->where('users.roleID', '=', 5) 
@@ -220,5 +220,41 @@ class Entropy_API_Controller extends Controller
                 ->get();
             return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
         }
+    }
+
+    public function appointments(Request $request) {
+        
+
+        $search_by = $request->search_by;
+        $search = $request->search;
+
+        $query = appointments::join('users as patients', 'appointments.userID_Patient', '=', 'patients.userID')
+            ->leftJoin('users as doctors', 'appointments.userID_Doctor', '=', 'doctors.userID')
+            ->select(
+                'appointments.appointmentID',
+                'appointments.date',
+                'patients.userID as patient_id',
+                'patients.firstName as patient_firstName',
+                'patients.lastName as patient_lastName',
+                'doctors.firstName as doctor_firstName',
+                'doctors.lastName as doctor_lastName'
+            );
+
+        if ($search_by === 'patient_id') {
+            $query->where('patients.userID', '=', $search);
+        } elseif ($search_by === 'date') {
+            $query->where('appointments.date', '=', $search);
+        }
+
+        $appointments = $query->get();
+
+        if ($appointments->isEmpty()) {
+            return view('doctorsAppointment')->with('message', 'No appointments found');
+        }
+
+        return view('doctorsAppointment', [
+            'appointments' => $appointments,
+            'doctors' => users::where('roleID', '=', 3)->get() 
+        ]);
     }
 }

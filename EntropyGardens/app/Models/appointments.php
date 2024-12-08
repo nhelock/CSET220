@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class appointments extends Model
 {
+    public $timestamp = false;
+    
     protected $fillable = [
         'userID_Patient',
         'date',
