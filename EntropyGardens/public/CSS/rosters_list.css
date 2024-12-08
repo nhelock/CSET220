@@ -1,0 +1,47 @@
+body {
+    background-color: #F5D7E3;
+}
+h1, h3 {
+    color: #A8557E;
+    text-align: center;
+}
+.flexbox {
+    display: flex;
+    justify-content: center;
+}
+.flexbox2 th {
+    padding: 1%;
+    border: 2px solid #A8557E;
+    background-color: #F4A5AE;
+    border-radius: 10px 5px;
+    color: white;
+}
+.flexbox td {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #A8557E;
+    background-color: #F4A5AE;
+    border-radius: 10px 5px;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search input[type="date"] {
+    padding: 5px;
+    border: 2px solid #A8557E;
+    border-radius: 5px;
+}
+.search button {
+    padding: 5px 10px;
+    background-color: #F4A5AE;
+    color: white;
+    border: 2px solid #A8557E;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search button:hover {
+    background-color: #A8557E;
+}

@@ -4,19 +4,20 @@
 
 @section('content')
 <link rel=stylesheet href='CSS/homepage.css'>
+<link rel=stylesheet href='CSS/rosters_list.css'>
     <h1>Rosters</h1>
 
     <h3>Search for Roster by Date:</h3>
-    <form action='/roster' method=POST>
+    <form action='/roster' method=POST class=search>
         @csrf
         <input type="date" name='date' required>
-        <button type=submit>Search</button>
+        <button type=submit class=>Search</button>
     </form>
 
     <?php if(isset($data)){ ?>
 
-        <table>
-            <tr>
+        <table class=flexbox>
+            <tr class=flexbox2>
                 <th>Supervisor</th>
                 <th>Doctor</th>
                 <th>Caregiver 1</th>
@@ -34,8 +35,8 @@
                 <td>{{ $data['cg_4'] }}</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>--</td>
+                <td>--</td>
                 <td>Group Alpha</td>
                 <td>Group Bravo</td>
                 <td>Group Charlie</td>
