@@ -3,7 +3,8 @@
 @section('title', 'Additional Information')
 
 @section('content')
-   <link rel=stylesheet href='CSS/additional.css'>
+   
+   <link rel="stylesheet" href="{{ asset('CSS/additional.css') }}">
     <div>
         <div class="heading">
         <h1>
