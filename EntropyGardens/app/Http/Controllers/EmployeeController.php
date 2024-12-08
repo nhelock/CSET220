@@ -116,9 +116,7 @@ class EmployeeController extends Controller
     public function viewPatients()
     {
        
-        
-        $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-                    
+        $patients = users::join('family__information', 'users.userID', '=', 'family__information.userID')
                     ->join('groups', 'users.userID', '=', 'groups.userID')
                     ->where('users.roleID', 5)
                     ->select(
@@ -126,13 +124,11 @@ class EmployeeController extends Controller
                         'users.firstName as first_name',
                         'users.lastName as last_name',
                         'users.DOB as DOB',
-                        // 'family__information.relation as relation',
-                        // 'family__information.emergencyContact as EmergencyContactNumber',
+                        'family__information.relation as relation',
+                        'family__information.emergencyContact as EmergencyContactNumber',
                         'groups.admissionDate as AdmissionDate')
             ->get();
         return view('PatientsList', compact('patients'));
-        //Once connection between family information and patients is made, add this below
-        // users::join('family__information', 'users.userID', '=', 'family__information.userID')
 
     }
 
@@ -144,18 +140,16 @@ class EmployeeController extends Controller
     
         $searchID = $request->input('search');
 
-        $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-                    
-                    ->join('groups', 'users.userID', '=', 'groups.userID')
-                    ->where('users.roleID', 5)
+        $patients = users::join('groups', 'users.userID', '=', 'groups.userID')
+                    ->join('family__information', 'users.userID', '=', 'family__information.userID')
                     ->where('users.userID', $searchID)
                     ->select(
                         'users.userID as ID',
                         'users.firstName as first_name',
                         'users.lastName as last_name',
                         'users.DOB as DOB',
-                        // 'family__information.relation as relation',
-                        // 'family__information.emergencyContact as EmergencyContactNumber',
+                        'family__information.relation as relation',
+                        'family__information.emergencyContact as EmergencyContactNumber',
                         'groups.admissionDate as AdmissionDate')
             ->get();
         return view('PatientsList', compact('patients'));
@@ -170,17 +164,17 @@ class EmployeeController extends Controller
         $searchID = $request->input('lastName');
 
         $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-                    
+                    ->join('family__information', 'users.userID', '=', 'family__information.userID')
                     ->join('groups', 'users.userID', '=', 'groups.userID')
-                    ->where('users.roleID', 5)
+                    
                     ->where('users.lastName', $searchID)
                     ->select(
                         'users.userID as ID',
                         'users.firstName as first_name',
                         'users.lastName as last_name',
                         'users.DOB as DOB',
-                        // 'family__information.relation as relation',
-                        // 'family__information.emergencyContact as EmergencyContactNumber',
+                        'family__information.relation as relation',
+                        'family__information.emergencyContact as EmergencyContactNumber',
                         'groups.admissionDate as AdmissionDate')
             ->get();
         return view('PatientsList', compact('patients'));
@@ -220,17 +214,17 @@ class EmployeeController extends Controller
         $searchID = $request->input('date');
 
         $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-                    
+                    ->join('family__information', 'users.userID', '=', 'family__information.userID')
                     ->join('groups', 'users.userID', '=', 'groups.userID')
-                    ->where('users.roleID', 5)
+                    
                     ->where('group.admissionDate', $searchID)
                     ->select(
                         'users.userID as ID',
                         'users.firstName as first_name',
                         'users.lastName as last_name',
                         'users.DOB as DOB',
-                        // 'family__information.relation as relation',
-                        // 'family__information.emergencyContact as EmergencyContactNumber',
+                        'family__information.relation as relation',
+                        'family__information.emergencyContact as EmergencyContactNumber',
                         'groups.admissionDate as AdmissionDate')
             ->get();
         return view('PatientsList', compact('patients'));

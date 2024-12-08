@@ -23,6 +23,22 @@
                     <td>{{ $patient->payTab }}</td>
                 </tr>
 
+    <div class="table-form-container">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>UserID</th>
+                    <th>Name</th>
+                    <th>Payment Due</th>
+                </tr>
+                <?php if(isset($patients)){foreach($patients as $patient){ ?>
+                
+                <tr>
+                    <td>{{ $patient->userID }}</td>
+                    <td>{{ $patient->firstName }} {{ $patient->lastName }}</td>
+                    <td>{{ $patient->payTab }}</td>
+                </tr>
+
                 <?php }} ?>
             </table>
         </div>
@@ -45,7 +61,15 @@
             
                 <br> {{-- Again, remove the <br> if you need to, just placeholder for readability --}}
                 
+                </table>
+            
+                <br> {{-- Again, remove the <br> if you need to, just placeholder for readability --}}
+                
 
+                <button type=submit>Submit Payment</button>
+            </form>
+        </div>
+    </div>
                 <button type=submit>Submit Payment</button>
             </form>
         </div>

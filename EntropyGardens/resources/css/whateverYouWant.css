@@ -1,0 +1,120 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Table Styles */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #34495e;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #ecf0f1;
+    color: #333;
+}
+
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    background-color: #dfe6e9;
+}
+
+/* Form Styles */
+form {
+    width: 80%;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form table {
+    width: 100%;
+}
+
+form label {
+    font-size: 16px;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form input[type="number"] {
+    width: 50%;
+}
+
+form button {
+    background-color: #2ecc71;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #27ae60;
+}
+
+/* Placeholder Styles */
+input::placeholder {
+    color: #aaa;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    form input[type="number"] {
+        width: 100%;
+    }
+}
