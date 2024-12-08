@@ -163,8 +163,7 @@ class EmployeeController extends Controller
 
         $searchID = $request->input('lastName');
 
-        $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-                    ->join('family__information', 'users.userID', '=', 'family__information.userID')
+        $patients = users::join('family__information', 'users.userID', '=', 'family__information.userID')
                     ->join('groups', 'users.userID', '=', 'groups.userID')
                     
                     ->where('users.lastName', $searchID)
@@ -180,30 +179,28 @@ class EmployeeController extends Controller
         return view('PatientsList', compact('patients'));
     }
 
-    // public function searchPatByCon(Request $request)
-    // {
-    //     $request->validate([
-    //         'eContact' => 'required|string|max:50'
-    //     ]);
+    public function searchPatByCon(Request $request)
+    {
+        $request->validate([
+            'eContact' => 'required|string|max:50'
+        ]);
 
-    //     $searchID = $request->input('eContact');
+        $searchID = $request->input('eContact');
 
-    //     $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-    //                 ->join('family__information', 'users.userID', '=', 'family__information.userID')
-    //                 ->join('groups', 'users.userID', '=', 'groups.userID')
-    //                 ->where('users.roleID', 5)
-    //                 ->where('family__information.emergencyContact', $searchID)
-    //                 ->select(
-    //                     'users.userID as ID',
-    //                     'users.firstName as first_name',
-    //                     'users.lastName as last_name',
-    //                     'users.DOB as DOB',
-    //                     'family__information.relation as relation',
-    //                     'family__information.emergencyContact as EmergencyContactNumber',
-    //                     'groups.admissionDate as AdmissionDate')
-    //         ->get();
-    //     return view('PatientsList', compact('patients'));
-    // }
+        $patients = users::join('family__information', 'users.userID', '=', 'family__information.userID')
+                    ->join('groups', 'users.userID', '=', 'groups.userID')
+                    ->where('family__information.emergencyContact', $searchID)
+                    ->select(
+                        'users.userID as ID',
+                        'users.firstName as first_name',
+                        'users.lastName as last_name',
+                        'users.DOB as DOB',
+                        'family__information.relation as relation',
+                        'family__information.emergencyContact as EmergencyContactNumber',
+                        'groups.admissionDate as AdmissionDate')
+            ->get();
+        return view('PatientsList', compact('patients'));
+    }
 
     public function searchPatByDate(Request $request)
     {
@@ -213,11 +210,10 @@ class EmployeeController extends Controller
 
         $searchID = $request->input('date');
 
-        $patients = users::join('appointments', 'users.userID', '=' , 'appointments.userID_Patient')
-                    ->join('family__information', 'users.userID', '=', 'family__information.userID')
+        $patients = users::join('family__information', 'users.userID', '=', 'family__information.userID')
                     ->join('groups', 'users.userID', '=', 'groups.userID')
                     
-                    ->where('group.admissionDate', $searchID)
+                    ->where('groups.admissionDate', $searchID)
                     ->select(
                         'users.userID as ID',
                         'users.firstName as first_name',

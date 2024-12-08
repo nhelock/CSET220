@@ -46,10 +46,6 @@
             
                 <br> {{-- Again, remove the <br> if you need to, just placeholder for readability --}}
                 
-                </table>
-            
-                <br> {{-- Again, remove the <br> if you need to, just placeholder for readability --}}
-                
 
                 <button type=submit>Submit Payment</button>
             </form>
