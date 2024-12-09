@@ -142,19 +142,19 @@ td .done1 {
                 <form id="form">
                     @foreach ( $patients as $patient )
                         <tr>
-                            <td>{{ $patients->first_name }} {{ $patients->last_name }}<input type="checkbox" id="done1" name="done1" value="done1"></td>
+                            <td>{{ $patient->first_name }} {{ $patients->last_name }}<input type="checkbox" id="done1" name="done1" value="done1"></td>
                                 <label for="done1"></label></td>
-                            <td>{{ $patients->morningMed}} <input type="checkbox" id="done2" name="done2" value="done2">
+                            <td>{{ $patient->morningMed}} <input type="checkbox" id="done2" name="done2" value="done2">
                                 <label for="done2"></label></td>
-                            <td>{{ $patients->afternoonMed }} <input type="checkbox" id="done3" name="done3" value="done3">
+                            <td>{{ $patient->afternoonMed }} <input type="checkbox" id="done3" name="done3" value="done3">
                                 <label for="done3"></label></td>
-                            <td>{{ $patients->nightMed }} <input type="checkbox" id="done4" name="done4" value="done4">
+                            <td>{{ $patient->nightMed }} <input type="checkbox" id="done4" name="done4" value="done4">
                                 <label for="done4"></label></td>
-                            <td>{{ $patients->breakfast }} <input type="checkbox" id="done5" name="done5" value="done5">
+                            <td>{{ $patient->breakfast }} <input type="checkbox" id="done5" name="done5" value="done5">
                                 <label for="done5"></label></td>
-                            <td>{{ $patients->lunch }} <input type="checkbox" id="done6" name="done6" value="done6">
+                            <td>{{ $patient->lunch }} <input type="checkbox" id="done6" name="done6" value="done6">
                                 <label for="done6"></label></td>
-                            <td>{{ $patients->dinner }} <input type="checkbox" id="done6" name="done6" value="done6">
+                            <td>{{ $patient->dinner }} <input type="checkbox" id="done6" name="done6" value="done6">
                                 <label for="done6"></label></td>
                             <td>
                                 <button type="submit" class="button" form="form">Ok</button>

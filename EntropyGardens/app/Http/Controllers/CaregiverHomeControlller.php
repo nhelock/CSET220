@@ -6,26 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\users;
 use App\Models\itineraries;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Models\missed_activities;
 
 class CaregiverHomeControlller extends Controller
-{
-    public function index()
     {
-       
-        $patients = users::join('itineraries', 'users.userID', '=', 'itineraries.userID')
-            ->select(
-                'users.firstName as first_name',
-                'users.lastName as last_name',
-                'itineraries.morningMed',
-                'itineraries.afternoonMed',
-                'itineraries.nightMed',
-                'itineraries.breakfast',
-                'itineraries.lunch',
-                'itineraries.dinner'
-                
-            )
-            ->get();
+        public function submitChecklist(Request $request)
+            {
+                $date = Carbon::now()->toDateString();
 
-        return view('CaregiverH', compact('patients'));
+            }
+
     }
-}
