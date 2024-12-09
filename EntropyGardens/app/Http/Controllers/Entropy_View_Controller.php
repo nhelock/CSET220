@@ -178,10 +178,70 @@ class Entropy_View_Controller extends Controller
 
     //Functions for Patient's Home Page
     public function patientHome(Request $request){
-        if($request->date){
+
+        if(session('roleName') == 'patient'){
+            $userID = session('userID');
+            $name = session('firstName') . " " . session('lastName');
+
+            if($request->date){
+                $date = $request->date;
+            }
+            else{
+                $today = \Carbon\Carbon::today();
+                $today_fix = $today->toDateString();
+                $date = $today_fix;
+            }
+            $data = itineraries::where('userID', '=', session('userID'))->where('date', '=', $date)->first();
+
+            if($data){
+                $group = groups::where('userID', '=', $data['userID'])->first();
+
+                $groupName = $group['groupName'];
+                $roster = rosters::where('date', '=', $data['date'])->first();
+
+
+                $doctor = users::where('userID', '=', $roster['userID_Doctor'])->select('firstName', 'lastName')->first();
+
+                if($group == 'Alpha'){
+                    $caregiver = users::where('userID', '=', $roster['userID_CG1'])->select('firstName', 'lastName')->first();
+                }
+                elseif($group == 'Bravo'){
+                    $caregiver = users::where('userID', '=', $roster['userID_CG2'])->select('firstName', 'lastName')->first();
+                }
+                elseif($group == 'Charlie'){
+                    $caregiver = users::where('userID', '=', $roster['userID_CG3'])->select('firstName', 'lastName')->first();
+                }
+                else{
+                    $caregiver = users::where('userID', '=', $roster['userID_CG4'])->select('firstName', 'lastName')->first();
+                }
+                
+                $appointment = appointments::where('userID_Patient', '=', $data['userID'])->where('date', '=', $data['date'])->first();
+                if($appointment){
+                    $is_appointment = 'Yes';
+                }
+                else{
+                    $is_appointment = 'No';
+                }
+                $new_data = [
+                    'doctorName' => $doctor['firstName'] .  " " . $doctor['lastName'],
+                    'doctorAppointment' => $is_appointment,
+                    'caregiverName' => $caregiver['firstName'] . " " . $caregiver['lastName'],
+                    'morningMedicine' => $data['morningMed'],
+                    'afternoonMedicine' => $data['afternoonMed'],
+                    'nightMedicine' => $data['nightMed'],
+                    'breakfast' => $data['breakfast'],
+                    'lunch' => $data['lunch'],
+                    'dinner' => $data['dinner']
+                ];
+                // return $new_data;
+                return view('patientH', ['userID' => $userID, 'name' => $name, 'date' => $date, 'data' => $new_data]);
+            }
+            return view('patientH', ['userID' => $userID, 'name' => $name, 'date' => $date,]);
         }
-        return view('patientH');
+        
     }
+
+
 
     //Function for Additional Information of Patient
     public function additionalSearchID(Request $request){
