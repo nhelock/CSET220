@@ -56,8 +56,14 @@ Route::get('/payment', [Entropy_View_Controller::class, 'payment']);
 
 Route::get('/roles', [Entropy_View_Controller::class, 'roles']);
 
+//Routes to Control the Patient Home Page
 Route::get('/patient', [Entropy_View_Controller::class, 'patientHome']);
 Route::post('/patient', [Entropy_View_Controller::class, 'patientHome']);
 
+//Additional Information of Patient Search option
 Route::get('/additional/search/id', [Entropy_View_Controller::class, 'additionalSearchID']);
+
+//Patient of Doctor Controllers
+Route::get('/doctor/patients', [Entropy_View_Controller::class, 'doctorPatients']);
+Route::post('/doctor/patients/search', [Entropy_View_Controller::class, 'doctorPatientSearch']);
 

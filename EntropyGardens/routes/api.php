@@ -36,3 +36,6 @@ Route::post('/roster', [Entropy_API_Controller::class, 'roster']);
 Route::post('/payment', [Entropy_API_Controller::class, 'payment']);
 //Role System.
 Route::post('/roles', [Entropy_API_Controller::class, 'roleAdd']);
+
+//Patient of Doctor Prescription Update
+Route::post('/doctor/patient/update', [Entropy_API_Controller::class, 'prescriptionChange']);

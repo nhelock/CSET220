@@ -11,6 +11,7 @@ use App\Models\itineraries;
 use App\Models\groups;
 use App\Models\rosters;
 use App\Models\appointments;
+use App\Models\prescriptions;
 use Carbon\Carbon;
 
 
@@ -252,6 +253,38 @@ class Entropy_View_Controller extends Controller
         return $data;
 
         return view('additional', ['patientFound' => $data]);
+    }
+
+
+    //Functions for Patient of Doctor Page:
+    public function doctorPatients(){
+        return view('patientOfDoctor');
+    }
+
+    public function doctorPatientSearch(Request $request){
+        $userID = $request->userID;
+        $today = \Carbon\Carbon::today();
+        $today_fix = $today->toDateString();
+        $date = $today_fix;
+
+        $user = users::where('userID', '=', $userID)->first();
+
+
+        $prescription = prescriptions::where('userID', '=', $userID)->first();
+        $appointment = appointments::where('userID_Patient', '=', $userID)->where('date', '=', $date)->first();
+
+        if(!$user){
+            return redirect('/doctor/patients');
+        }
+        if(!$prescription && !$appointment){
+            return redirect('/doctor/patients');
+        }
+
+        //On the Page, do logic for if the prescription and appointment are there.
+
+        return view('patientOfDoctor', ['prescription' => $prescription, 'appointment' => $appointment,
+        'data' => true, 'userID' => $userID]);
+        
     }
 
 }

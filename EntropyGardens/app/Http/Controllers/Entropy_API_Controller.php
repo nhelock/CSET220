@@ -7,6 +7,7 @@ use App\Models\family_information;
 use App\Models\roles;
 use App\Models\rosters;
 use App\Models\outstanding_balances;
+use App\Models\prescriptions;
 use Illuminate\Http\Request;
 
 
@@ -265,6 +266,35 @@ class Entropy_API_Controller extends Controller
         return $patientFound;
         return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
     }}
+
+    //Function for changing Prescription at the Patient of Doctor Page
+    public function prescriptionChange(Request $request){
+        $userID = $request->userID;
+        $today = \Carbon\Carbon::today();
+        $today_fix = $today->toDateString();
+        $date = $today_fix;
+
+        $prescription = prescriptions::where('userID', '=', $userID)->first();
+
+        $data = [
+            'userID' => $userID,
+            'date' => $date,
+            'comment' => $request->comment,
+            'morningMed' =>$request->morningMed,
+            'afternoonMed' => $request->afternoonMed,
+            'nightMed' => $request->nightMed
+        ];
+
+        if($prescription){
+            $prescription->update($data);
+        }
+        else{
+            prescriptions::create($data);
+        }
+
+
+        return redirect('/doctor/patients');
+    }
     
 
 
