@@ -1,4 +1,8 @@
-<html>
+@extends('layouts.app')
+
+@section('title', 'Appointments')
+
+@section('content')
     <head>
         <title>
             Employee Page
@@ -189,17 +193,10 @@ form.update_salary button:hover {
 
         </style>
     </head>
-    <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Other">Other</a></li>
-                <li><a href="#Other">Other</a></li>
-            </ul>
-    </nav>
     <div>
         <div class="heading">
         <h1>
-            Appointments Infomation of Patient 
+            Appointments 
         </h1>
         </div>
         <div class='form-container'>
@@ -207,7 +204,7 @@ form.update_salary button:hover {
                 @csrf
                 <label for="search">Search By Date:</label>
                 <input type="text" id="search" name="search" placeholder="Date">
-                <input type="hidden" name="search_by" value="userID">
+                <input type="hidden" name="search_by" value="userID_Doctor">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -236,18 +233,7 @@ form.update_salary button:hover {
                             <td>{{$appointment->patient_firstName}} {{$appointment->patient_lastName}}</td>
                             <td>{{$appointment->date}}</td>
                             <td>
-                                @if($appointment->doctor_firstName)
                                     {{$appointment->doctor_firstName}} {{$appointment->doctor_lastName}}
-                                @else
-                                    <select name="doctor_{{$appointment->appointmentID}}" required>
-                                        <option value="">Select Doctor</option>
-                                        @foreach ($doctors as $doctor)
-                                            <option value="{{$doctor->userID}}">
-                                                {{$doctor->firstName}} {{$doctor->lastName}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                @endif
                             </td>
                         </tr>
                         @empty
@@ -264,5 +250,4 @@ form.update_salary button:hover {
         ?>
     </div>
     </body>
-    <script src="script.js"></script>
-</html>
+    @endsection

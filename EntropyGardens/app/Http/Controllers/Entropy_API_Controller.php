@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\users;
 use App\Models\family_information;
 use App\Models\roles;
@@ -221,9 +222,11 @@ class Entropy_API_Controller extends Controller
             return view('additional', ['patient' => $patient, 'patientFound' => $patientFound]);
         }
     }
-
     public function appointments(Request $request) {
         
+        $today = \Carbon\Carbon::today();
+        $today_fix = $today->toDateString();
+        $date = $today_fix;
 
         $search_by = $request->search_by;
         $search = $request->search;
@@ -238,11 +241,9 @@ class Entropy_API_Controller extends Controller
                 'patients.lastName as patient_lastName',
                 'doctors.firstName as doctor_firstName',
                 'doctors.lastName as doctor_lastName'
-            );
+            )->where('appointments.date', '=', $date);
 
-        if ($search_by === 'patient_id') {
-            $query->where('patients.userID', '=', $search);
-        } elseif ($search_by === 'date') {
+        if ($search_by === 'date') {
             $query->where('appointments.date', '=', $search);
         }
 
