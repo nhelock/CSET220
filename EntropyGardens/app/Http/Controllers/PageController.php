@@ -28,27 +28,32 @@ class PageController extends Controller
     
         $users = DB::table('users')
             ->join('roles', 'roles.roleID', '=', 'users.roleID')
-            ->select('users.user_id', 'users.firstName', 'users.lastName')
+            ->select('users.userID', 'users.firstName', 'users.lastName')
             ->get();
     
         $patients = DB::table('appointments')
-            ->join('users', 'users.user_id', '=', 'appointments.userID_Patient')
+            ->join('users', 'users.userID', '=', 'appointments.userID_Patient')
             ->where('users.roleID', '=',7)
-            ->where('users.roleID', '=',5)
-            ->select('users.user_id', 'appointments.userID_Patient')
+            ->or('users.roleID', '=',5)
+            ->select('users.userID', 'appointments.userID_Patient')
             ->get();
     
         $itineraries = DB::table('itineraries')
-            ->join('users', 'users.user_id', '=', 'itineraries.user_id')
+            ->join('users', 'users.userID', '=', 'itineraries.userID')
             ->select('users.firstName', 'users.lastName', 'itineraries.morningMed', 'itineraries.afternoonMed', 'itineraries.nightMed', 'itineraries.breakfast', 'itineraries.lunch', 'itineraries.dinner')
             ->get();
     
         return view('patients_home', [
             'date' => $date,
-            'patients' => $patients,
+            'patients' => $patients->userID_Patient,
             'users' => $users,
-            'itineraries' => $itineraries
+            'itineraries' => $itineraries->firstName,
+            'itineraries' => $itineraries->lastName
         ]);
+    }
+
+    function PatientsHome2(){
+        return view('patients_home2');
     }
     
     function Payment(){

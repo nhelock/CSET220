@@ -13,6 +13,8 @@ Route::get('/patientofdoctor', [PageController::class, 'PatientofDoctor']);
 
 Route::get('/patientshome', [PageController::class, 'PatientsHome']);
 
+Route::get('/patientshome2', [PageController::class, 'PatientsHome2']);
+
 // Route::get('/payment', [PageController::class, 'Payment']);
 
 // Route::get('/patients_home', function () {
