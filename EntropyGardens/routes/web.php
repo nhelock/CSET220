@@ -71,3 +71,7 @@ Route::post('/doctor/patients/search', [Entropy_View_Controller::class, 'doctorP
 Route::get('/appointments', [Entropy_View_Controller::class, 'appointments']);
 Route::get('/appointments/search', [Entropy_View_Controller::class, 'appointments']);
 
+//Admin Report Route
+Route::get('/report', [Entropy_View_Controller::class, 'adminReport']);
+Route::get('/report/search', [Entropy_View_Controller::class, 'adminReport']);
+

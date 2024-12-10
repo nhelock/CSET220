@@ -1,4 +1,4 @@
-<html>
+{{-- <html>
     <head>
         <title>
             Admin Report
@@ -58,4 +58,63 @@
     </div>
     </body>
     <script src="script.js"></script>
-</html>
+</html> --}}
+
+@extends('layouts.app')
+
+@section('title', 'Admin Report')
+
+@section('content')
+
+    <link rel=stylesheet href={{ asset('/CSS/patientOfDoctor.css') }}>
+    <h1 class=titles>Search By Date: </h1>
+    <form action=/report/search method=GET>
+        <table class=new-prescription>
+            <tr>
+                <th><label for=date>Date: </label></th>
+                <th><input type=date name=date></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type=submit class=prescription-button>Search</button></td>
+            </tr>
+        </table>
+        
+        
+
+        
+    </form>
+
+    <?php if(isset($entries)){ ?>
+        <h1 class=titles>Entries Found:</h1>
+
+        <?php foreach($entries as $entry){ ?>
+            <table class=prescription>
+                <tr>
+                    <th>Patient's Name</th>
+                    <th>Doctor's Name</th>
+                    <th>Doctor's Appointment</th>
+                    <th>Caregiver's Name</th>
+                    <th>Morning Medicine</th>
+                    <th>Afternoon Medicine</th>
+                    <th>Night Medicine</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                </tr>
+                <tr>
+                    <td>{{ $entry['firstName'] }} {{ $entry['lastName'] }}</td>
+                    <td>{{ $entry['doctorName'] }}</td>
+                    <td>{{ $entry['appointment'] }}</td>
+                    <td>{{ $entry['caregiverName'] }}</td>
+                    <td><?php if($entry['morningMed'] == false){ ?>Missed<?php } else { ?>Done<?php } ?></td>
+                    <td><?php if($entry['afternoonMed'] == false){ ?>Missed<?php } else { ?>Done<?php } ?></td>
+                    <td><?php if($entry['nightMed'] == false){ ?>Missed<?php } else { ?>Done<?php } ?></td>
+                    <td><?php if($entry['breakfast'] == false){ ?>Missed<?php } else { ?>Done<?php } ?></td>
+                    <td><?php if($entry['lunch'] == false){ ?>Missed<?php } else { ?>Done<?php } ?></td>
+                    <td><?php if($entry['dinner'] == false){ ?>Missed<?php } else { ?>Done<?php } ?></td>
+                </tr>
+            </table>
+
+    <?php }} ?>
+@endsection

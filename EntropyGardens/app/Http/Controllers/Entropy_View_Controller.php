@@ -310,4 +310,62 @@ class Entropy_View_Controller extends Controller
         return view('appointments');
     }
 
+    public function adminReport(Request $request){
+        if($request->date){
+            $data = itineraries::join('users', 'itineraries.userID', '=', 'users.userID')
+            ->where('date', $request->date)
+            ->where(function ($query) {
+                $query->where('morningMed', false)
+                      ->orWhere('afternoonMed', false)
+                      ->orWhere('nightMed', false)
+                      ->orWhere('breakfast', false)
+                      ->orWhere('lunch', false)
+                      ->orWhere('dinner', false);
+            })
+            ->get();
+
+            $data->each(function ($item){
+                $doctorID = rosters::where('date', '=', $item->date)->first();
+                $doctorNameValue = users::where('userID', '=', $doctorID['userID_Doctor'])->first();
+                $doctorName = $doctorNameValue['firstName'] . " " . $doctorNameValue['lastName'];
+                $item->doctorName = $doctorName;
+            });
+            $data->each(function ($item){
+                $patientGroup = groups::where('userID', '=', $item->userID)->first();
+                $roster = rosters::where('date', '=', $item->date)->first();
+                if($patientGroup['groupName'] == 'Alpha'){
+                    $caregiver = $roster['userID_CG1'];
+                }
+                elseif($patientGroup['groupName'] == 'Bravo'){
+                    $caregiver = $roster['userID_CG2'];
+                }
+                elseif($patientGroup['groupName'] == 'Charlie'){
+                    $caregiver = $roster['userID_CG3'];
+                }
+                else{
+                    $caregiver = $roster['userID_CG4'];
+                }
+                $caregiverNameValue = users::where('userID', '=', $caregiver)->first();
+                $caregiverName = $caregiverNameValue['firstName'] . " " . $caregiverNameValue['lastName'];
+                $item->caregiverName = $caregiverName;
+            });
+            $data->each(function ($item){
+                $appointment = appointments::where('date', '=', $item->date)->where('userID_Patient', '=', $item->userID)->first();
+
+                if($appointment){
+                    $item->appointment = "Yes";
+                }
+                else{
+                    $item->appointment = "No";
+                }
+            });
+
+            // return $data;
+            return view('adminreport', ['entries' => $data]);
+        
+        }
+
+        return view('adminreport');
+    }
+
 }
