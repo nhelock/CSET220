@@ -59,7 +59,7 @@ thead{
 
 
 /* NAV BAR */
-nav ul {
+/* nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -90,7 +90,7 @@ nav li a:hover {
     text-align: center;
     padding-top: 30px;
     padding-bottom: 25px;
-}
+} */
 
 /* BUTTONS */
 
