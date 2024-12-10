@@ -75,7 +75,7 @@
         
     </form>
 
-    <a class=cancel-button href=/doctor/patients>Go Back</a>
+    <div class=back-button><a class=cancel-button href=/doctor/patients>Go Back</a></div>
     
     <?php } ?>
 

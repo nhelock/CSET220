@@ -110,7 +110,7 @@
                         <?php } ?>
 
                         <?php if(session('accesslevel' == 3)){ ?> 
-                            <li><a href="/doctor_patients">Your Patients</a></li>
+                            <li><a href="/doctor/patients">Your Patients</a></li>
                         <?php } ?>
 
 
