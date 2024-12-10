@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* TABLE*/
+tr:hover {background-color: #F5D7E3;}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+form.search_by {
+    padding-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead{
+    background-color: #F5D7E3;
+}
+
+
+/* NAV BAR */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #a8577e;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+  
+nav li {
+    float: left;
+}
+  
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+nav li a:hover {
+    background-color: #783d59;
+}
+
+.heading h1 {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 25px;
+}
+
+/* BUTTONS */
+
+
+
+td .button{
+    width:fit-content;
+    padding: 5px;
+    background: #3b429f;
+    color: white;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    overflow: visible;
+
+}
+
+td .button :hover{
+    background: #aa7dce;
+}
+
+td .c-button{
+    width:fit-content;
+    padding: 5px;
+    background: #3b429f;
+    color: white;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    overflow: visible;
+}
+
+td .done1 {
+    background-color: #3b429f;
+}
+
+.checkmark {
+    background-color: #3b429f;
+}

@@ -26,7 +26,8 @@ Route::get('/PatientsList/search-by-Lname', [EmployeeController::class, 'searchP
 Route::get('/PatientsList/search-by-e_contact', [EmployeeController::class, 'searchPatByCon'])->name('patients.searchPatByCon');
 Route::get('/PatientsList/search-by-date', [EmployeeController::class, 'searchPatByDate'])->name('patients.searchPatByDate');
 
-Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'index'])->name('CaregiverH.index');
+Route::get('/CaregiverH', [CaregiverHomeControlller::class, 'view']);
+Route::post('/CaregiverH/complete', [CaregiverHomeControlller::class, 'submitChecklist'])->name('CaregiverH.submit');
 
 Route::get('/family', [Entropy_View_Controller::class, 'familyHome']);
 Route::post('/family', [Entropy_View_Controller::class, 'familyPatientSearch']);

@@ -1,11 +1,12 @@
-<html>
-    <head>
-        <title>
-            Caregivers Home
-        </title>
-        <style>
-            
-* {
+
+
+    @extends('layouts.app')
+    @section('title', 'Caregiver Home')
+        
+    @section('content')
+    <link rel="stylesheet" href="{{ asset('CSS/caregiverHome.css') }}">
+    <style>
+        * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -110,15 +111,8 @@ td .done1 {
 .checkmark {
     background-color: #3b429f;
 }
-        </style>
-    </head>
-    <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Other">Other</a></li>
-                <li><a href="#Other">Other</a></li>
-            </ul>
-    </nav>
+    </style>
+        
     <body>
         <div class="heading">
         <h1>
@@ -139,33 +133,55 @@ td .done1 {
             </tr>
             </thead>
             <tbody>
-                <form id="form">
-                    @foreach ( $patients as $patient )
+                @if($patients->isEmpty())
+                    <p>No patients scheduled for today.</p>
+                @else
+                @foreach ($patients as $patient)
+                    <form id="form" action="{{ route('CaregiverH.submit') }}" method="POST">
+                        @csrf
                         <tr>
-                            <td>{{ $patient->first_name }} {{ $patients->last_name }}<input type="checkbox" id="done1" name="done1" value="done1"></td>
-                                <label for="done1"></label></td>
-                            <td>{{ $patient->morningMed}} <input type="checkbox" id="done2" name="done2" value="done2">
-                                <label for="done2"></label></td>
-                            <td>{{ $patient->afternoonMed }} <input type="checkbox" id="done3" name="done3" value="done3">
-                                <label for="done3"></label></td>
-                            <td>{{ $patient->nightMed }} <input type="checkbox" id="done4" name="done4" value="done4">
-                                <label for="done4"></label></td>
-                            <td>{{ $patient->breakfast }} <input type="checkbox" id="done5" name="done5" value="done5">
-                                <label for="done5"></label></td>
-                            <td>{{ $patient->lunch }} <input type="checkbox" id="done6" name="done6" value="done6">
-                                <label for="done6"></label></td>
-                            <td>{{ $patient->dinner }} <input type="checkbox" id="done6" name="done6" value="done6">
-                                <label for="done6"></label></td>
+                            <tr>
+                                <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+
+                                <input type="hidden" name="patients[{{ $patient->userID }}][morningMed]" value="0">
+                                <td>
+                                    <input type="checkbox" name="patients[{{ $patient->userID }}][morningMed]" value="1" {{ $patient->morningMed ? 'checked' : '' }}>
+                                </td>
+                                
+                                <input type="hidden" name="patients[{{ $patient->userID }}][afternoonMed]" value="0">
+                                <td>
+                                    <input type="checkbox" name="patients[{{ $patient->userID }}][afternoonMed]" value="1" {{ $patient->afternoonMed ? 'checked' : '' }}>
+                                </td>
+            
+                                <input type="hidden" name="patients[{{ $patient->userID }}][nightMed]" value="0">
+                                <td>
+                                    <input type="checkbox" name="patients[{{ $patient->userID }}][nightMed]" value="1" {{ $patient->nightMed ? 'checked' : '' }}>
+                                </td>
+            
+                                <input type="hidden" name="patients[{{ $patient->userID }}][breakfast]" value="0">
+                                <td>
+                                    <input type="checkbox" name="patients[{{ $patient->userID }}][breakfast]" value="0" {{ $patient->breakfast ? 'checked' : '' }}>
+                                </td>
+            
+                                <input type="hidden" name="patients[{{ $patient->userID }}][lunch]" value="0">
+                                <td>
+                                    <input type="checkbox" name="patients[{{ $patient->userID }}][lunch]" value="1" {{ $patient->lunch ? 'checked' : '' }}>
+                                </td>
+            
+                                <input type="hidden" name="patients[{{ $patient->userID }}][dinner]" value="0">
+                                <td>
+                                    <input type="checkbox" name="patients[{{ $patient->userID }}][dinner]" value="1" {{ $patient->dinner ? 'checked' : '' }}>
+                                </td>
                             <td>
-                                <button type="submit" class="button" form="form">Ok</button>
-                                <button type="reset" class="c-button" form="form">Cancel</button>
-                            </td>  
+                                <button type="submit" class="button">Ok</button>
+                            </td>
                         </tr>
+                    </form>
                     @endforeach
-                </form>
                 
             </tbody>
         </table>
+        @endif
     </body>
     <script src="script.js"></script>
-</html>
+@endsection

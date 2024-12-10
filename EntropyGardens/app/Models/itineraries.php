@@ -16,4 +16,5 @@ class itineraries extends Model
         'lunch',
         'dinner'
     ];
+    public $timestamps = false; 
 }
