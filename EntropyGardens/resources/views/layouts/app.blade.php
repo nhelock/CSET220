@@ -78,7 +78,7 @@
                             <li><a href="/doctorH">Home</a></li>
                         <?php } ?>
                         <?php if(session('accesslevel') == 4){ ?> 
-                            <li><a href="/caregiverH">Home</a></li>
+                            <li><a href="/caregiver">Home</a></li>
                         <?php } ?>
                         <?php if(session('accesslevel') == 5){ ?> 
                             <li><a href="/patient">Patient Home</a></li>

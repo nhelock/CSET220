@@ -108,3 +108,11 @@ form button:hover {
 input::placeholder {
     color: gray;
 }
+
+.title{
+    margin:auto;
+    text-align:center;
+    color:black;
+    margin-top:5vh;
+    margin-bottom:5vh;
+}

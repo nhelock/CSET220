@@ -5,7 +5,7 @@
 @section('content')
     <link rel='stylesheet' href='/CSS/paymentPage.css'>
 
-    <p>Welcome to the Payment Page, {{ session('firstName') }}!</p>
+    <h1 class=title>Welcome to the Payment Page, {{ session('firstName') }}!</h1>
 
     
     <div class="table-form-container">
