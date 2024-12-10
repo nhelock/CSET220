@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Patient Home')
+@section('title', 'Doctor\'s Patients')
 
 @section('content')
     <link rel=stylesheet href={{ asset('/CSS/patientOfDoctor.css') }}>

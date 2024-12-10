@@ -287,4 +287,27 @@ class Entropy_View_Controller extends Controller
         
     }
 
+    public function appointments(Request $request){
+
+        if($request->date && $request->userID_Patient){
+            $data = $request->all();
+
+            $doctorID_Value = rosters::where('date', '=', $data['date'])->select('userID_Doctor')->first();
+
+            $doctor_data = users::where('userID', '=', $doctorID_Value['userID_Doctor'])->first();
+
+            $doctorName = $doctor_data['firstName'] . " " . $doctor_data['lastName'];
+
+            $doctorID = $doctorID_Value['userID_Doctor'];
+
+
+            $patient_data = users::where('userID', '=', $data['userID_Patient'])->first();
+
+            $patientName = $patient_data['firstName'] . " " . $patient_data['lastName'];
+
+            return view('appointments', ['data' => $data, 'patientName' => $patientName, 'doctorName' => $doctorName, 'doctorID' => $doctorID]);
+        }
+        return view('appointments');
+    }
+
 }

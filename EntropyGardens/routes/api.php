@@ -39,3 +39,6 @@ Route::post('/roles', [Entropy_API_Controller::class, 'roleAdd']);
 
 //Patient of Doctor Prescription Update
 Route::post('/doctor/patient/update', [Entropy_API_Controller::class, 'prescriptionChange']);
+
+//Doctor's Appointment Maker
+Route::post('/appointment/new', [Entropy_API_Controller::class, 'newAppointment']);

@@ -8,6 +8,7 @@ use App\Models\roles;
 use App\Models\rosters;
 use App\Models\outstanding_balances;
 use App\Models\prescriptions;
+use App\Models\appointments;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -295,6 +296,22 @@ class Entropy_API_Controller extends Controller
 
 
         return redirect('/doctor/patients');
+    }
+
+
+    //Function to make a new appointment
+    public function newAppointment(Request $request){
+        // return $request->all();
+
+        $data = [
+            'userID_Patient' => $request->userID_Patient,
+            'date' => $request->date,
+            'userID_Doctor' => $request->userID_Doctor
+        ];
+
+        appointments::create($data);
+
+        return redirect('/appointments');
     }
     
 

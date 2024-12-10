@@ -67,3 +67,7 @@ Route::get('/additional/search/id', [Entropy_View_Controller::class, 'additional
 Route::get('/doctor/patients', [Entropy_View_Controller::class, 'doctorPatients']);
 Route::post('/doctor/patients/search', [Entropy_View_Controller::class, 'doctorPatientSearch']);
 
+//Doctor's Appointments page
+Route::get('/appointments', [Entropy_View_Controller::class, 'appointments']);
+Route::get('/appointments/search', [Entropy_View_Controller::class, 'appointments']);
+
