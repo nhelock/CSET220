@@ -83,3 +83,47 @@ body {
     margin-right: 5px;
     cursor: pointer;
 }
+.found-title{
+    color:#4c236d;
+    margin:auto;
+    text-align:center;
+}
+.date-search-table{
+    margin:auto;
+    text-align:center;
+    padding:10px;
+}
+.search{
+    margin-top:10px;
+    padding:3px;
+    border:2px solid #4c236d;
+    border-radius:2px;
+}
+.search:hover{
+    cursor:pointer;
+    background-color:#4c236d;
+    color:white;
+    border:2px solid black;
+}
+.found-data-table{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    padding:10px;
+    border:2px solid #4c236d;
+    border-collapse:collapse;
+}
+.found-data-table th{
+    text-align:center;
+    border:2px solid #4c236d;
+    background-color:#59307a;
+    color:white;
+    padding:5px;
+}
+.found-data-table td{
+    text-align:center;
+    border:2px solid #4c236d;
+    background-color:pink;
+    color:black;
+    padding:5px;
+}
