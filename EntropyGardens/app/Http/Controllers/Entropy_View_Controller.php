@@ -368,4 +368,71 @@ class Entropy_View_Controller extends Controller
         return view('adminreport');
     }
 
+    //Caregiver Home Function
+    public function caregiverHome(Request $request){
+        if($request->itineraryID){
+            if($request->morningMed){
+                $morningMed = true;
+            }
+            else{
+                $morningMed = false;
+            }
+            if($request->afternoonMed){
+                $afternoonMed = true;
+            }
+            else{
+                $afternoonMed = false;
+            }
+            if($request->nightMed){
+                $nightMed = true;
+            }
+            else{
+                $nightMed = false;
+            }
+            if($request->breakfast){
+                $breakfast = true;
+            }
+            else{
+                $breakfast = false;
+            }
+            if($request->lunch){
+                $lunch = true;
+            }
+            else{
+                $lunch = false;
+            }
+            if($request->dinner){
+                $dinner = true;
+            }
+            else{
+                $dinner = false;
+            }
+
+            $entry = itineraries::where('itineraryID', '=', $request->itineraryID)->first();
+
+            $data = [
+                'itineraryID' => $request->itineraryID,
+                'userID' => $entry['userID'],
+                'date' => $entry['date'],
+                'morningMed' => $morningMed,
+                'afternoonMed' => $afternoonMed,
+                'nightMed' => $nightMed,
+                'breakfast' => $breakfast,
+                'lunch' => $lunch,
+                'dinner' => $dinner
+
+            ];
+
+            $entry->update($data);
+            return redirect('/caregiver');
+        }
+        $today = \Carbon\Carbon::today();
+        $today_fix = $today->toDateString();
+        $date = $today_fix;
+
+        $data = itineraries::join('users', 'users.userID', 'itineraries.userID')->join('groups', 'itineraries.userID', 'groups.userID')->where('date', '=', $date)->get();
+
+        return view('caregiverH', ['date' => $date, 'data' => $data]);
+    }
+
 }

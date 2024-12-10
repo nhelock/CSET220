@@ -1,4 +1,4 @@
-<html>
+{{-- <html>
     <head>
         <title>
             Caregivers Home
@@ -168,4 +168,46 @@ td .done1 {
         </table>
     </body>
     <script src="script.js"></script>
-</html>
+</html> --}}
+
+@extends('layouts.app')
+
+@section('title', 'Caregiver Home')
+
+@section('content')
+    <link rel=stylesheet href={{ asset('/CSS/patientOfDoctor.css') }}>
+
+    <h1 class=titles>List of Patient Duties for: {{ $date }}</h1>
+
+    <?php foreach($data as $patientList){ ?>
+        <table class=new-prescription>
+            <tr>
+                <th>Patient's Name</th>
+                <th>Morning Medicine</th>
+                <th>Afternoon Medicine</th>
+                <th>Night Medicine</th>
+                <th>Breakfast</th>
+                <th>Lunch</th>
+                <th>Dinner</th>
+            </tr>
+            <tr>
+                <form action=/caregiver method=POST>
+                    @csrf
+                    <input type=hidden name=itineraryID value={{ $patientList['itineraryID'] }}>
+        
+                
+                    <td>{{ $patientList['firstName'] }} {{ $patientList['lastName'] }}</td>
+                    <td><input type="checkbox" name="morningMed" <?= $patientList['morningMed'] ? 'checked' : '' ?>></td>
+                    <td><input type="checkbox" name="afternoonMed" <?= $patientList['afternoonMed'] ? 'checked' : '' ?>></td>
+                    <td><input type="checkbox" name="nightMed" <?= $patientList['nightMed'] ? 'checked' : '' ?>></td>
+                    <td><input type="checkbox" name="breakfast" <?= $patientList['breakfast'] ? 'checked' : '' ?>></td>
+                    <td><input type="checkbox" name="lunch" <?= $patientList['lunch'] ? 'checked' : '' ?>></td>
+                    <td><input type="checkbox" name="dinner" <?= $patientList['dinner'] ? 'checked' : '' ?>></td>
+                    <td><button type=submit class=prescription-button>Update</button></td>
+                </form>
+            </tr>
+            
+        </table>
+    <?php } ?>
+
+@endsection

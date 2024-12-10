@@ -75,3 +75,7 @@ Route::get('/appointments/search', [Entropy_View_Controller::class, 'appointment
 Route::get('/report', [Entropy_View_Controller::class, 'adminReport']);
 Route::get('/report/search', [Entropy_View_Controller::class, 'adminReport']);
 
+//Caregiver Home Route
+Route::get('/caregiver', [Entropy_View_Controller::class, 'caregiverHome']);
+Route::post('/caregiver', [Entropy_View_Controller::class, 'caregiverHome']);
+
