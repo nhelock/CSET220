@@ -6,6 +6,7 @@
     <link rel=stylesheet href={{ asset('/CSS/patientOfDoctor.css') }}>
 
     <?php if(!isset($data)){ ?>
+    <h1 class=titles>Search for User for Appointment Scheduling</h1>
     <form action=/appointments/search method=get>
         <table class=prescription>
             <tr>
